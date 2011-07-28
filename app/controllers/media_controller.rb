@@ -3,9 +3,19 @@ class MediaController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
 
-  def download
+  def download_original
     @medium = Medium.find(params[:id])
     send_file @medium.file.path, :type => @medium.file_content_type, :disposition => 'inline'
+  end
+
+  def download_medium
+    @medium = Medium.find(params[:id])
+    send_file @medium.file.path(:medium), :type => @medium.file_content_type, :disposition => 'inline'
+  end
+
+  def download_thumb
+    @medium = Medium.find(params[:id])
+    send_file @medium.file.path(:thumb), :type => @medium.file_content_type, :disposition => 'inline'
   end
 
   # GET /media

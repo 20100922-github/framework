@@ -4,7 +4,9 @@ Framework2::Application.routes.draw do
   resources :media
   resources :media do
     member do
-      get 'download'
+      get 'download_original'
+      get 'download_medium'
+      get 'download_thumb'
     end
   end
 
