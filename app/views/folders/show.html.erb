@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @folder.name %>
+</p>
+<p>
+  <b>Description:</b>
+  <%= @folder.description %>
+</p>
+<p>
+<% @media.each do |m| %>
+  <%= link_to image_tag(m.file.url), medium_path(m) %>
+<% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_folder_path(@folder) %> |
+<%= link_to 'Back', folders_path %>

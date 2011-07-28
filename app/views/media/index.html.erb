@@ -1,0 +1,29 @@
+<h1>Listing media</h1>
+
+<table>
+  <tr>
+    <th>File</th>
+    <th>Note</th>
+    <th>Folder</th>
+    <th>Tags</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @media.each do |medium| %>
+  <tr>
+    <td><%= image_tag medium.file.url %></td>
+    <td><%= medium.note %></td>
+    <td><%= link_to medium.folder.name, folder_path(medium.folder) %></td>
+    <td><% for tag in medium.tags %><%= link_to tag.name, tag_path(tag) %> <% end %></td>
+    <td><%= link_to 'Show', medium %></td>
+    <td><%= link_to 'Edit', edit_medium_path(medium) %></td>
+    <td><%= link_to 'Destroy', medium, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium', new_medium_path %>
