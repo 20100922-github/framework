@@ -18,6 +18,11 @@ class MediaController < ApplicationController
     send_file @medium.file.path(:thumb), :type => @medium.file_content_type, :disposition => 'inline'
   end
 
+  def download_quadratic
+    @medium = Medium.find(params[:id])
+    send_file @medium.file.path(:quadratic), :type => @medium.file_content_type, :disposition => 'inline'
+  end
+
   # GET /media
   # GET /media.xml
   def index

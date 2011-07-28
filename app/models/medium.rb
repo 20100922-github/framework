@@ -4,5 +4,5 @@ class Medium < ActiveRecord::Base
   has_attached_file :file,
                     :path => ":rails_root/private/:class/:id/:style/:basename.:extension",
                     :url => "/:class/:id/download_:style",
-                    :styles => { :medium => "300x300>", :thumb => "100x100>" }
+                    :styles => { :medium => "300x300>", :thumb => "100x100>", :quadratic => "50x50#" }
 end
