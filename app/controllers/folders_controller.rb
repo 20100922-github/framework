@@ -3,6 +3,11 @@ class FoldersController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
 
+  def download_medium
+    @folder = Folder.find(params[:id])
+    send_file @folder.cover.path(:medium), :type => @folder.cover_content_type, :disposition => 'inline'
+  end
+
   # GET /folders
   # GET /folders.xml
   def index

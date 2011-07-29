@@ -20,6 +20,11 @@ Framework2::Application.routes.draw do
   resources :tags
 
   resources :folders
+  resources :folders do
+    member do
+      get 'download_medium'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

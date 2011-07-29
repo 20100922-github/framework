@@ -3,6 +3,8 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Created at</th>
+    <th>Updated at</th>
     <th></th>
     <th></th>
   </tr>
@@ -10,6 +12,8 @@
 <% @folders.each do |folder| %>
   <tr>
     <td><%= link_to folder.name, folder %></td>
+    <td><%= folder.created_at %></td>
+    <td><%= folder.updated_at %></td>
     <td><%= link_to 'Edit', edit_folder_path(folder) %></td>
     <td><%= link_to 'Destroy', folder, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
