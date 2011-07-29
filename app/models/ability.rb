@@ -7,7 +7,7 @@ class Ability
     if user.role? :admin
       can :manage, :all
     else
-      can :read, [Folder, Tag, Medium]
+      can [:read, :download_original, :download_medium, :download_thumb, :download_quadratic], [Folder, Tag, Medium]
     end
     # Define abilities for the passed in user here. For example:
     #
