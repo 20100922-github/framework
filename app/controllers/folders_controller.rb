@@ -8,6 +8,11 @@ class FoldersController < ApplicationController
     send_file @folder.cover.path(:medium), :type => @folder.cover_content_type, :disposition => 'inline'
   end
 
+  def download_quadratic
+    @folder = Folder.find(params[:id])
+    send_file @folder.cover.path(:quadratic), :type => @folder.cover_content_type, :disposition => 'inline'
+  end
+
   # GET /folders
   # GET /folders.xml
   def index

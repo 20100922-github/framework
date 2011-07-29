@@ -23,6 +23,7 @@ Framework2::Application.routes.draw do
   resources :folders do
     member do
       get 'download_medium'
+      get 'download_quadratic'
     end
   end
 
