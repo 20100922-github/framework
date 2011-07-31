@@ -7,18 +7,35 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <ul class="hmenu">
-    <%= render 'devise/menu/login_items' %>
-  </ul>
-  <%= link_to 'folders', folders_path %> |
-  <%= link_to 'tags', tags_path %> |
-  <%= link_to 'media', media_path %> |
-  <%= link_to 'users', users_path %> |
-  <%= link_to 'roles', roles_path %> |
-  <%= link_to 'permissions', permissions_path %>
-<%= yield %>
-
+  <div class="header">
+    placeholder header
+  </div>
+  <div class="breadcrumb">
+    placeholder breadcrumb
+  </div>
+  <div class="table">
+    <div class="tr">
+      <div class="td left">
+        <ul>
+          <li><%= link_to 'folders', folders_path %></li>
+          <li><%= link_to 'tags', tags_path %></li>
+          <li><%= link_to 'media', media_path %></li>
+          <li><%= link_to 'users', users_path %></li>
+          <li><%= link_to 'roles', roles_path %></li>
+          <li><%= link_to 'permissions', permissions_path %></li>
+          <li><%= render 'devise/menu/login_items' %></li>
+        </ul>
+      </div>
+      <div class="td">
+        <div class="infobar">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+        </div>
+        <div class="content">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

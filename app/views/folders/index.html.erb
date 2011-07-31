@@ -1,5 +1,7 @@
 <h1>Listing folders</h1>
 
+<%= link_to 'New Folder', new_folder_path %>
+<!--
 <table>
   <tr>
     <th>Cover</th>
@@ -11,8 +13,13 @@
     <th></th>
     <th></th>
   </tr>
-
-<% @folders.each do |folder| %>
+  -->
+  <% @folders.each do |folder| %>
+    <div class="folder">
+      <div><%= link_to image_tag(folder.cover.url(:quadratic)), folder %></div>
+      <div><%= link_to folder.name, folder %></div>
+    </div>
+    <!--
   <tr>
     <td><%= link_to image_tag(folder.cover.url(:quadratic)), folder %></td>
     <td><%= link_to folder.name, folder %></td>
@@ -23,9 +30,9 @@
     <td><%= link_to 'Edit', edit_folder_path(folder) %></td>
     <td><%= link_to 'Destroy', folder, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
+  -->
 <% end %>
-</table>
+<!--</table>
 
 <br />
-
-<%= link_to 'New Folder', new_folder_path %>
+-->

@@ -1,23 +1,37 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
-<p>
+<div class="table">
+  <div class="tr">
+    <div class="td">
+      <%= image_tag(@folder.cover.url(:medium)) %>
+    </div>
+    <div class="td">
+      <div><%= @folder.name %></div>
+      <div><%= @folder.description %></div>
+      <div>
+        <% @media.each do |m| %>
+          <%= link_to image_tag(m.file.url(:quadratic)), m %>
+        <% end %>
+      </div>
+      <div>
+        <ul>
+        <% @folder.roles.each do |r| %>
+          <li><%= r.name %></li>
+        <% end %>
+        </ul>
+      </div>
+      <div>
+        <%= link_to 'Edit', edit_folder_path(@folder) %> |
+        <%= link_to 'Back', folders_path %>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+<div class="folder">
 <%= image_tag(@folder.cover.url(:medium)) %>
-</p>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @folder.name %>
-</p>
-<p>
-  <b>Description:</b>
-  <%= @folder.description %>
-</p>
-<p>
-<% @media.each do |m| %>
-  <%= link_to image_tag(m.file.url(:quadratic)), medium_path(m) %>
-<% end %>
-</p>
-
-
-<%= link_to 'Edit', edit_folder_path(@folder) %> |
-<%= link_to 'Back', folders_path %>
+<div>
+</div>
+-->
