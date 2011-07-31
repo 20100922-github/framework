@@ -39,3 +39,10 @@ div.new {
   left: 230px;
   padding: 0px;
 }
+div.new span {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  left: 13px;
+  top: 35px;
+}
