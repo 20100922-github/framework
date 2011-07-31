@@ -35,14 +35,14 @@ div.cover img {
 }
 div.new {
   position: absolute;
-  top: 15px;
-  left: 230px;
+  top: 5px;
+  left: 220px;
   padding: 0px;
 }
 div.new span {
   position: absolute;
   color: white;
   font-weight: bold;
-  left: 13px;
-  top: 35px;
+  left: 19px;
+  top: 42px;
 }
