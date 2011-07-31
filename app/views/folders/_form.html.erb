@@ -26,6 +26,15 @@
     <%= f.label :user_id %><br />
     <%= f.collection_select(:user_id, User.all, :id, :username) %>
   </div>
+  <div class="field">
+    <%= f.label :role_id %><br />
+    <% for role in Role.find(:all) %>
+      <div>
+        <%= check_box_tag "folder[role_ids][]", role.id, @folder.roles.include?(role) %>
+        <%= role.name %>
+      </div>
+    <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

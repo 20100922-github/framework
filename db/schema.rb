@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110729140539) do
+ActiveRecord::Schema.define(:version => 20110731062701) do
 
   create_table "folders", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(:version => 20110729140539) do
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "folders_roles", :id => false, :force => true do |t|
+    t.integer "folder_id"
+    t.integer "role_id"
   end
 
   create_table "media", :force => true do |t|
