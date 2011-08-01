@@ -4,3 +4,4 @@ planned todos/features:
 - shadows on images
 - old-school photo style (ie. white border around image)
 - paperclip interpolation for storage of images: something planned like private/<username>/<datum>/...
+- comments for media (multiple users can comment on media)

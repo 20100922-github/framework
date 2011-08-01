@@ -1,3 +1,18 @@
+/* menu -- begin */
+div.menu {
+  position: absolute;
+  top: 0px;
+  right: 50%;
+}
+div.menu span {
+  display: none;
+}
+div.menu:hover span {
+  display: inline;
+}
+/* menu -- end */
+
+
 div.table {
   display: table; border-collapse: collapse;
   width: 100%;

@@ -8,6 +8,11 @@
   <b>Note:</b>
   <%= @medium.note %>
 </p>
+<p>
+  <%= @medium.comments.find_each do |c| %>
+    <%= c.user.username %> said on <%= c.created_at %>: <%= c.text %><br/>
+  <% end %>
+</p>
 
 
 <%= link_to 'Edit', edit_medium_path(@medium) %> |

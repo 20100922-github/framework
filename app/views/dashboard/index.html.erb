@@ -1,2 +1,7 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<% if user_signed_in? %>
+  Hello <%= current_user.username %>.<br/>
+  <ul>
+    <li><%= @folders.size %> new album(s)
+    <li><%= @comments.size %> new comment(s)
+  </ul>
+<% end %>

@@ -1,4 +1,6 @@
 Framework2::Application.routes.draw do
+  resources :comments
+
   get "dashboard/index"
 
   resources :permissions
