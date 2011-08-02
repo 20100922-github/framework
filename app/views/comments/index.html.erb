@@ -14,7 +14,7 @@
   <tr>
     <td><%= comment.text %></td>
     <td><%= comment.user.username %></td>
-    <td><%= comment.medium.file_file_name %></td>
+    <td><%= image_tag(comment.medium.file.url(:thumb)) %></td>
     <td><%= link_to 'Show', comment %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
     <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
