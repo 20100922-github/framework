@@ -26,7 +26,7 @@ class MediaController < ApplicationController
   # GET /media
   # GET /media.xml
   def index
-    @media = Medium.all
+    @media = Medium.accessible_by(current_ability)
     @tags = Tag.all
 
     respond_to do |format|

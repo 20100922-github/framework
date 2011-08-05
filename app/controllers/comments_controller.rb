@@ -1,8 +1,12 @@
 class CommentsController < ApplicationController
+
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+
   # GET /comments
   # GET /comments.xml
   def index
-    @comments = Comment.all
+    @comments = Comment.accessible_by(current_ability)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -7,7 +7,10 @@ class Ability
     if user.role? :admin
       can :manage, :all
     else
-      can [:read, :download_original, :download_medium, :download_thumb, :download_quadratic], [Folder, Tag, Medium]
+      can [:read, :download_medium, :download_quadratic], Folder, :roles => { :id => user.role_ids }
+      can [:read, :download_original, :download_medium, :download_thumb, :download_quadratic], Medium, :folder => { :roles => { :id => user.role_ids }}
+      can :read, Comment, :medium => { :folder => { :roles => { :id => user.role_ids }}}
+      #can [:read, :download_original, :download_medium, :download_thumb, :download_quadratic], [Folder, Tag, Medium]
     end
     # Define abilities for the passed in user here. For example:
     #

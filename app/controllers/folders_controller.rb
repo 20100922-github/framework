@@ -16,7 +16,7 @@ class FoldersController < ApplicationController
   # GET /folders
   # GET /folders.xml
   def index
-    @folders = Folder.all
+    @folders = Folder.accessible_by(current_ability)
 
     respond_to do |format|
       format.html # index.html.erb

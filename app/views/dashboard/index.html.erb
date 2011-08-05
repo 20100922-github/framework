@@ -1,7 +1,21 @@
 <% if user_signed_in? %>
   Hello <%= current_user.username %>.<br/>
-  <ul>
-    <li><%= @folders.size %> new album(s)
-    <li><%= @comments.size %> new comment(s)
-  </ul>
+  <% @folders.each do |f| %>
+    <div class="folder">
+      <div>
+        <div class="cover">
+          <%= link_to image_tag(f.cover.url(:quadratic)), f %>
+        </div>
+        <div class="new">
+          <%= image_tag("new_64x64.png") %>
+        </div>
+        <div class="new"><span>New</span></div>
+      </div>
+    </div>
+  <% end %>
+  <% @comments.each do |c| %>
+    <% if can? :read, c %>
+      <%= image_tag(c.medium.file.url(:quadratic)) %><%= c.user.username %><%= c.text %>
+    <% end %>
+  <% end %>
 <% end %>
