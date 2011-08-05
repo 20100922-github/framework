@@ -14,16 +14,13 @@
     <th></th>
   </tr>
   -->
+
   <% @folders.each do |folder| %>
     <div class="folder">
       <div>
         <div class="cover">
           <%= link_to image_tag(folder.cover.url(:quadratic)), folder %>
         </div>
-        <div class="new">
-          <%= image_tag("new_64x64.png") %>
-        </div>
-        <div class="new"><span>New</span></div>
       </div>
       <div><%= link_to folder.name, folder %></div>
     </div>
