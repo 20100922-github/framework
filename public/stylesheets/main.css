@@ -1,14 +1,49 @@
-/* menu -- begin */
-div.menu {
+/* bars -- begin */
+div.bar {
+  opacity: 0.95;
   position: absolute;
   top: 0px;
-  right: 50%;
+  height: 90px;
+  padding: 10px;
+  border-left: 3px solid;
+  border-bottom: 3px solid;
+  border-right: 3px solid;
+}
+div.info.bar {
+  left: 25%;
+  background-color: #ffc;
+  border-bottom-left-radius: 20px;
+  border-color: #cc0;
+  z-index: 1;
+}
+div.error.bar {
+  left: 25%;
+  background-color: #fcc;
+  border-bottom-left-radius: 20px;
+  border-color: #c00;
+  z-index: 1;
+}
+/* bars -- end */
+
+/* menu -- begin */
+div.menu.bar {
+  right: 25%;
+  background-color: #ccf;
+  border-bottom-right-radius: 20px;
+  border-color: #00c;
+  z-index: 2;
+}
+div.menu img {
+  line-height: 64px;
+  float: right;
 }
 div.menu span {
   display: none;
+  padding-right: 10px;
+  width: 300px;
 }
 div.menu:hover span {
-  display: inline;
+  display: inline-block;
 }
 /* menu -- end */
 

@@ -7,9 +7,15 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div class="menu">
+  <div class="menu bar">
     <%= image_tag "help_64x64.png" %>
-    <span><%= link_to 'home', root_path %> || <%= link_to 'folders', folders_path %> | <%= link_to 'tags', tags_path %> | <%= link_to 'media', media_path %> | <%= link_to 'comments', comments_path %> || <%= link_to 'users', users_path %> | <%= link_to 'roles', roles_path %> | <%= link_to 'permissions', permissions_path %> | <%= render 'devise/menu/login_items' %></span>
+    <span>
+      <ul>
+        <li><%= link_to 'home', root_path %></li>
+        <li><%= link_to 'folders', folders_path %> | <%= link_to 'tags', tags_path %> | <%= link_to 'media', media_path %> | <%= link_to 'comments', comments_path %></li>
+        <li><%= link_to 'users', users_path %> | <%= link_to 'roles', roles_path %> | <%= link_to 'permissions', permissions_path %></li>
+        <li><%= render 'devise/menu/login_items' %></li>
+    </span>
   </div>
   <div class="table">
     <div class="tr top">
@@ -17,8 +23,18 @@
       </div>
       <div class="td center">
         <div class="infobar">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
+          <% if notice %>
+          <div class="info bar">
+            <%= image_tag "info_64x64.png" %>
+            <%= notice %>
+          </div>
+          <% end %>
+          <% if alert %>
+          <div class="error bar">
+            <%= image_tag "error_64x64.png" %>
+            <%= alert %>
+          </div>
+          <% end %>
         </div>
         <div class="content">
           <%= yield %>
