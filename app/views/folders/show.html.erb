@@ -1,5 +1,3 @@
-<!--<p id="notice"><%= notice %></p>-->
-
 <div class="table">
   <div class="tr">
     <div class="td">
@@ -21,7 +19,7 @@
       <div>
         <ul>
         <% @folder.roles.each do |r| %>
-          <li><%= r.name %></li>
+          <li><%= link_to r.name, r %></li>
         <% end %>
         </ul>
       </div>
@@ -32,11 +30,3 @@
     </div>
   </div>
 </div>
-<!--
-<div class="folder">
-<%= image_tag(@folder.cover.url(:medium)) %>
-</div>
-
-<div>
-</div>
--->

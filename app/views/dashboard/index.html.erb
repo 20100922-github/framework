@@ -1,5 +1,7 @@
 <% if user_signed_in? %>
   Hello <%= current_user.username %>.<br/>
+  These folders and comments were added after your last log-in:<br/>
+  Folders:<br/>
   <% @folders.each do |f| %>
     <div class="folder">
       <div>
@@ -13,9 +15,17 @@
       </div>
     </div>
   <% end %>
+  Comments:<br/>
   <% @comments.each do |c| %>
     <% if can? :read, c %>
-      <%= image_tag(c.medium.file.url(:quadratic)) %><%= c.user.username %><%= c.text %>
+      <div class="<%= cycle("even","odd") %>">
+        <span style="float:left;"><%= image_tag "comment_48x48.png" %><br/></span>
+        <span style="float:left;"><%= c.created_at %><br/><%= link_to c.user.username, c.user %><br/> in <%= link_to c.medium.folder.name, c.medium.folder %> on ...</span>
+        <span class="thumbs">
+          <%= link_to image_tag(c.medium.file.url(:quadratic)), c.medium %>
+        </span>
+        <span class="quot"><span class="lquot">&ldquo;</span><%= c.text %><span class="rquot">&rdquo;</span></span>
+      </div>
     <% end %>
   <% end %>
 <% end %>

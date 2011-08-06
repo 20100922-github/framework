@@ -5,6 +5,7 @@
     <th>Text</th>
     <th>User</th>
     <th>Medium</th>
+    <th>Folder</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,8 +15,8 @@
   <tr>
     <td><%= comment.text %></td>
     <td><%= comment.user.username %></td>
-    <td><%= image_tag(comment.medium.file.url(:thumb)) %></td>
-    <td><%= link_to 'Show', comment %></td>
+    <td><span class="thumbs"><%= image_tag(comment.medium.file.url(:thumb)) %></span></td>
+    <td><%= link_to comment.medium.folder.name, comment.medium.folder %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
     <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

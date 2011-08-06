@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @tag.name %>
+These media are tagged with <i><%= @tag.name %></i>:
 </p>
 <p>
   <% for medium in @tag.media %>
-  <%= link_to image_tag(medium.file.url(:quadratic)), medium_path(medium) %>
+    <span class="thumbs"><%= link_to image_tag(medium.file.url(:quadratic)), medium_path(medium) %></span>
   <% end %>
 </p>
 
