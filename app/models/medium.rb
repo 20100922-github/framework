@@ -7,4 +7,16 @@ class Medium < ActiveRecord::Base
                     :path => ":rails_root/private/:class/:id/:style/:basename.:extension",
                     :url => "/:class/:id/download_:style",
                     :styles => { :medium => "300x300>", :thumb => "100x100>", :quadratic => "50x50#" }
+
+  def next
+    Medium.where("id > ? and folder_id = ?", self.id, self.folder.id).order("id ASC").first
+  end
+
+  def previous
+    Medium.where("id < ? and folder_id = ?", self.id, self.folder.id).order("id DESC").first
+  end
+
+  def up
+    Folder.where("id = ?", self.folder.id).first
+  end
 end

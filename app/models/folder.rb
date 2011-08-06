@@ -10,4 +10,12 @@ class Folder < ActiveRecord::Base
                     :path => ":rails_root/private/:class/:id/:style/:basename.:extension",
                     :url => "/:class/:id/download_:style",
                     :styles => { :medium => "300x300>", :quadratic => "200x200#" }
+
+  def next
+    Folder.where("id > ?", self.id).order("id ASC").first
+  end
+
+  def previous
+    Folder.where("id < ?", self.id).order("id DESC").first
+  end
 end

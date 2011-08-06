@@ -17,6 +17,7 @@
           </span>
       </div>
       <div>
+        <%= image_tag "access_48x48.png" %>
         <ul>
         <% @folder.roles.each do |r| %>
           <li><%= link_to r.name, r %></li>
@@ -24,8 +25,10 @@
         </ul>
       </div>
       <div>
+        <%= link_to image_tag("previous_48x48.png"), folder_path(@folder.previous) %>
+        <%= link_to image_tag("up_48x48.png"), folders_path %>
+        <%= link_to image_tag("next_48x48.png"), folder_path(@folder.next) %>
         <%= link_to 'Edit', edit_folder_path(@folder) %> |
-        <%= link_to 'Back', folders_path %>
       </div>
     </div>
   </div>

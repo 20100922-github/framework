@@ -14,6 +14,8 @@
   <% end %>
 </p>
 
-
+<%= link_to image_tag("previous_48x48.png"), medium_path(@medium.previous) %>
+<%= link_to image_tag("up_48x48.png"), folder_path(@medium.up) %>
+<%= link_to image_tag("next_48x48.png"), medium_path(@medium.next) %>
 <%= link_to 'Edit', edit_medium_path(@medium) %> |
 <%= link_to 'Back', media_path %>
