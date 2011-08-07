@@ -1,4 +1,5 @@
 /* bars -- begin */
+/*
 div.bar {
   opacity: 0.95;
   position: absolute;
@@ -23,9 +24,11 @@ div.error.bar {
   border-color: #c00;
   z-index: 1;
 }
+  */
 /* bars -- end */
 
 /* menu -- begin */
+/*
 div.menu.bar {
   right: 25%;
   background-color: #ccf;
@@ -45,6 +48,7 @@ div.menu span {
 div.menu:hover span {
   display: inline-block;
 }
+  */
 /* menu -- end */
 
 

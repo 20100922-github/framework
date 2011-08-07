@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Folder:</b>
+  <%= @medium.folder.name %>
+</p>
+<p>
   <b>File:</b>
   <%= image_tag @medium.file.url(:medium) %>
 </p>
