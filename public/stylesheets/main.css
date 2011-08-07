@@ -63,6 +63,7 @@ div.tr.top, div.tr.bottom {
 }
 div.td.left, div.td.center, div.td.right {
   display: table-cell;
+  vertical-align: middle;
 }
 div.td.left, div.td.right {
   width: 10%;
@@ -99,19 +100,27 @@ div.folder div + div {
 div.header, div.content {
   padding-bottom: 20px;
 }
+
+/* new - begin */
+.dashboard.cover {
+  position: relative;
+  padding-bottom: 40px;
+}
 div.new {
   position: absolute;
-  top: 5px;
-  left: 220px;
+  top: -30px;
+  left: 170px;
   padding: 0px;
 }
 div.new span {
   position: absolute;
   color: white;
   font-weight: bold;
-  left: 19px;
-  top: 42px;
+  left: 25px;
+  top: 27px;
 }
+/* new - end */
+
 /* lists - begin */
 .even {
 }
@@ -119,20 +128,6 @@ div.new span {
   background-color: #ffc;
 }
 /* lists - end */
-
-/* comments - begin */
-span.quot {
-  padding-left: 20px;
-}
-span.lquot {
-  font-size: 20pt;
-  padding-right: 10px;
-}
-span.rquot {
-  font-size: 20pt;
-  padding-left: 10px;
-}
-/* comments - end */
 
 .actions {
   clear: both;

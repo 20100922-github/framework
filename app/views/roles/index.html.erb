@@ -1,23 +1,23 @@
 <h1>Listing roles</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @roles.each do |role| %>
-  <tr>
-    <td><%= role.name %></td>
-    <td><%= link_to 'Show', role %></td>
-    <td><%= link_to 'Edit', edit_role_path(role) %></td>
-    <td><%= link_to 'Destroy', role, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% if can? :create, Role %>
+  <%= link_to 'New Role', new_role_path %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Role', new_role_path %>
+<div class="table">
+  <div class="tr middle">
+    <div class="td center">Name</div>
+    <div class="td center">Folders that can be accessed</div>
+    <div class="td center"></div>
+    <div class="td center"></div>
+    <div class="td center"></div>
+  </div>
+<% @roles.each do |role| %>
+  <div class="tr middle <%= cycle("odd", "even") %>">
+    <div class="td center"><%= role.name %></div>
+    <div class="td center"><% role.folders.each do |f| %><%= link_to f.name, f %> <% end %></div>
+    <div class="td center"><%= link_to 'Show', role %></div>
+    <div class="td center"><%= link_to 'Edit', edit_role_path(role) %></div>
+    <div class="td center"><%= link_to 'Destroy', role, :confirm => 'Are you sure?', :method => :delete %></div>
+  </div>
+<% end %>
+</div>

@@ -1,29 +1,27 @@
 <h1>Listing media</h1>
 
-<%= link_to 'New Medium', new_medium_path %><br/>
-<table>
-  <tr>
-    <th>File</th>
-    <th>Note</th>
-    <th>Folder</th>
-    <th>Tags</th>
-    <th># Comments</th>
-    <th>Roles</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @media.each do |medium| %>
-  <tr class="<%= cycle("odd", "even") %>">
-    <td class="thumbs"><%= link_to image_tag(medium.file.url(:thumb)), medium %></td>
-    <td><%= medium.note %></td>
-    <td><%= link_to medium.folder.name, folder_path(medium.folder) %></td>
-    <td><% for tag in medium.tags %><%= link_to tag.name, tag_path(tag) %> <% end %></td>
-    <td><%= medium.comments.size %></td>
-    <td><% medium.folder.roles.each do |r| %><%= link_to r.name, role_path(r) %> <% end %></td>
-    <td><%= link_to 'Edit', edit_medium_path(medium) %></td>
-    <td><%= link_to 'Destroy', medium, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% if can? :create, Medium %>
+  <%= link_to 'New Medium', new_medium_path %><br/>
 <% end %>
-</table>
+<div class="table">
+  <div class="tr middle">
+    <div class="td center">File</div>
+    <div class="td center">Folder</div>
+    <div class="td center">Tags</div>
+    <div class="td center"># Comments</div>
+    <div class="td center">Roles that can access Medium</div>
+    <div class="td center"></div>
+    <div class="td center"></div>
+  </div>
+<% @media.each do |medium| %>
+  <div class="tr middle <%= cycle("odd", "even") %>">
+    <div class="td center thumbs"><%= link_to image_tag(medium.file.url(:thumb)), medium %></div>
+    <div class="td center"><%= link_to medium.folder.name, folder_path(medium.folder) %></div>
+    <div class="td center"><% for tag in medium.tags %><%= link_to tag.name, tag_path(tag) %> <% end %></div>
+    <div class="td center"><%= medium.comments.size %></div>
+    <div class="td center"><% medium.folder.roles.each do |r| %><%= link_to r.name, role_path(r) %> <% end %></div>
+    <div class="td center"><%= link_to 'Edit', edit_medium_path(medium) %></div>
+    <div class="td center"><%= link_to 'Destroy', medium, :confirm => 'Are you sure?', :method => :delete %></div>
+  </div>
+<% end %>
+</div>

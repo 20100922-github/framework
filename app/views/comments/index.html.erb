@@ -1,28 +1,26 @@
 <h1>Listing comments</h1>
 
-<table>
-  <tr>
-    <th>Text</th>
-    <th>User</th>
-    <th>Medium</th>
-    <th>Folder</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @comments.each do |comment| %>
-  <tr class="<%= cycle("odd", "even") %>">
-    <td><%= comment.text %></td>
-    <td><%= comment.user.username %></td>
-    <td><span class="thumbs"><%= link_to image_tag(comment.medium.file.url(:thumb)), medium_path(comment.medium) %></span></td>
-    <td><%= link_to comment.medium.folder.name, comment.medium.folder %></td>
-    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% if can? :create, Comment %>
+  <%= link_to 'New Comment', new_comment_path %><br/>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Comment', new_comment_path %>
+<div class="table">
+  <div class="tr middle">
+    <div class="td center">Text</div>
+    <div class="td center">User</div>
+    <div class="td center">Medium</div>
+    <div class="td center">Folder</div>
+    <div class="td center"></div>
+    <div class="td center"></div>
+    <div class="td center"></div>
+  </div>
+<% @comments.each do |comment| %>
+  <div class="tr middle <%= cycle("odd", "even") %>">
+    <div class="td center"><%= comment.text %></div>
+    <div class="td center"><%= comment.user.username %></div>
+    <div class="td center"><span class="thumbs"><%= link_to image_tag(comment.medium.file.url(:thumb)), medium_path(comment.medium) %></span></div>
+    <div class="td center"><%= link_to comment.medium.folder.name, comment.medium.folder %></div>
+    <div class="td center"><%= link_to 'Edit', edit_comment_path(comment) %></div>
+    <div class="td center"><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></div>
+  </div>
+<% end %>
+</div>

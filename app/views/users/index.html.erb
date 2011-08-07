@@ -1,27 +1,25 @@
 <h1>Listing users</h1>
 
-<table>
-  <tr>
-    <th>Email</th>
-    <th>Username</th>
-    <th>Folders</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.email %></td>
-    <td><%= user.username %></td>
-    <td><% for folder in user.folders %><%= link_to folder.name, folder_path(folder) %> <% end %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% if can? :create, User %>
+  <%= link_to 'New User', new_user_path %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New User', new_user_path %>
+<div class="table">
+  <div class="tr middle">
+    <div class="td center">Email</div>
+    <div class="td center">Username</div>
+    <div class="td center">Folders created</div>
+    <div class="td center"></div>
+    <div class="td center"></div>
+    <div class="td center"></div>
+  </div>
+<% @users.each do |user| %>
+  <div class="tr middle <%= cycle("odd", "even") %>">
+    <div class="td center"><%= user.email %></div>
+    <div class="td center"><%= user.username %></div>
+    <div class="td center"><% for folder in user.folders %><%= link_to folder.name, folder_path(folder) %> <% end %></div>
+    <div class="td center"><%= link_to 'Show', user %></div>
+    <div class="td center"><%= link_to 'Edit', edit_user_path(user) %></div>
+    <div class="td center"><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></div>
+  </div>
+<% end %>
+</div>

@@ -1,24 +1,22 @@
 <h1>Listing tags</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th># Media</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @tags.each do |tag| %>
-  <tr class="<%= cycle("odd", "even") %>">
-    <td><%= link_to tag.name, tag_path(tag) %></td>
-    <td><%= tag.media.size %></td>
-    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-    <td><%= link_to 'Destroy', tag, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% if can? :create, Tag %>
+  <%= link_to 'New Tag', new_tag_path %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Tag', new_tag_path %>
+<div class="table">
+  <div class="tr middle">
+    <div class="td center">Name</div>
+    <div class="td center"># Media</div>
+    <div class="td center"></div>
+    <div class="td center"></div>
+    <div class="td center"></div>
+  </div>
+<% @tags.each do |tag| %>
+  <div class="tr middle <%= cycle("odd", "even") %>">
+    <div class="td center"><%= link_to tag.name, tag_path(tag) %></div>
+    <div class="td center"><%= tag.media.size %></div>
+    <div class="td center"><%= link_to 'Edit', edit_tag_path(tag) %></div>
+    <div class="td center"><%= link_to 'Destroy', tag, :confirm => 'Are you sure?', :method => :delete %></div>
+  </div>
+<% end %>
+</div>
