@@ -1,13 +1,16 @@
 <% if user_signed_in? %>
-  <h1>Last 5 folders created:</h1>
+<h1>Last 5 folders created:</h1>
   <div class="table">
     <div class="tr middle">
-    <% @folders.each do |f| %>
+      <% @folders.each do |f| %>
+        <% if can? :read, f %>
       <div style="width: 15%" class="td center">
-        <span class="thumbs"><%= link_to image_tag(f.cover.url(:thumb)), f %></span>
-        <span><%= link_to f.name, f %></span>
+        <div class="thumbs"><%= link_to image_tag(f.cover.url(:thumb)), f %></div>
+        <div><%= f.created_at.to_formatted_s(:short) %></div>
+        <div><%= link_to f.name, f %></div>
       </div>
-    <% end %>
+        <% end %>
+      <% end %>
       <div class="td center"><%= link_to "Show all folders", folders_path %></div>
     </div>
   </div>
@@ -18,9 +21,11 @@
     <% @comments.each do |c| %>
       <% if can? :read, c %>
         <div style="width: 15%" class="td center">
-          <span class="thumbs"><%= link_to image_tag(c.medium.file.url(:quadratic)), c.medium %></span>
-          <span><%= c.created_at.to_formatted_s(:short) %><br/><%= link_to c.user.username, c.user %><br/> in <%= link_to c.medium.folder.name, c.medium.folder %> on ...</span>
-          <span>"<%= c.text %>"</span>
+          <div class="thumbs"><%= link_to image_tag(c.medium.file.url(:quadratic)), c.medium %></div>
+          <div><%= c.created_at.to_formatted_s(:short) %></div>
+          <div><%= link_to c.user.username, c.user %></div>
+          <div><%= link_to c.medium.folder.name, c.medium.folder %></div>
+          <div>"<%= c.text %>"</div>
         </div>
       <% end %>
     <% end %>
