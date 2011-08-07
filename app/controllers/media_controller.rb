@@ -26,7 +26,7 @@ class MediaController < ApplicationController
   # GET /media
   # GET /media.xml
   def index
-    @media = Medium.accessible_by(current_ability)
+    @media = Medium.accessible_by(current_ability).order("created_at DESC")
     @tags = Tag.all
 
     respond_to do |format|

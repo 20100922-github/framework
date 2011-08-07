@@ -13,10 +13,15 @@ class FoldersController < ApplicationController
     send_file @folder.cover.path(:quadratic), :type => @folder.cover_content_type, :disposition => 'inline'
   end
 
+  def download_thumb
+    @folder = Folder.find(params[:id])
+    send_file @folder.cover.path(:thumb), :type => @folder.cover_content_type, :disposition => 'inline'
+  end
+
   # GET /folders
   # GET /folders.xml
   def index
-    @folders = Folder.accessible_by(current_ability)
+    @folders = Folder.accessible_by(current_ability).order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb

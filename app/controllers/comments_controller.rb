@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
   def index
-    @comments = Comment.accessible_by(current_ability)
+    @comments = Comment.accessible_by(current_ability).order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb

@@ -8,13 +8,22 @@
         <div class="cover">
           <%= link_to image_tag(f.cover.url(:quadratic)), f %>
         </div>
-        <div class="new">
-          <%= image_tag("new_64x64.png") %>
-        </div>
-        <div class="new"><span>New</span></div>
+        <% if f.created_at > current_user.last_sign_in_at %>
+          <div class="new">
+            <%= image_tag("new_64x64.png") %>
+          </div>
+          <div class="new"><span>New</span></div>
+        <% end %>
       </div>
     </div>
   <% end %>
+  <div class="folder">
+    <div>
+      <div class="cover">
+        <%= link_to "Show all folders", folders_path %>
+      </div>
+    </div>
+    </div>
   Comments:<br/>
   <% @comments.each do |c| %>
     <% if can? :read, c %>

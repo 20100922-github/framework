@@ -1,25 +1,19 @@
-<p id="notice"><%= notice %></p>
-
-<p>
+<div>
   <b>Folder:</b>
-  <%= @medium.folder.name %>
-</p>
-<p>
-  <b>File:</b>
+  <%= image_tag @medium.folder.cover.url(:thumb) %><%= @medium.folder.name %>
+</div>
+<div class="cover float">
   <%= image_tag @medium.file.url(:medium) %>
-</p>
-<p>
-  <b>Note:</b>
-  <%= @medium.note %>
-</p>
-<p>
-  <%= @medium.comments.find_each do |c| %>
-    <%= c.user.username %> said on <%= c.created_at %>: <%= c.text %><br/>
+</div>
+<div>
+  <%= link_to "Add comment", new_comment_path %><br/>
+  <% @medium.comments.order("created_at DESC").each do |c| %>
+    On <%= c.created_at.to_formatted_s(:short) %>: <%= c.user.username %> said "<%= c.text %>"<br/>
   <% end %>
-</p>
-
-<%= link_to image_tag("previous_48x48.png"), medium_path(@medium.previous) %>
-<%= link_to image_tag("up_48x48.png"), folder_path(@medium.up) %>
-<%= link_to image_tag("next_48x48.png"), medium_path(@medium.next) %>
-<%= link_to 'Edit', edit_medium_path(@medium) %> |
-<%= link_to 'Back', media_path %>
+</div>
+<div class="actions">
+  <%= link_to image_tag("previous_48x48.png"), medium_path(@medium.previous) %>
+  <%= link_to image_tag("up_48x48.png"), folder_path(@medium.up) %>
+  <%= link_to image_tag("next_48x48.png"), medium_path(@medium.next) %>
+  <%= link_to 'Edit', edit_medium_path(@medium) %>
+</div>

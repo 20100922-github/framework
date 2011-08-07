@@ -9,7 +9,7 @@ class Folder < ActiveRecord::Base
   has_attached_file :cover,
                     :path => ":rails_root/private/:class/:id/:style/:basename.:extension",
                     :url => "/:class/:id/download_:style",
-                    :styles => { :medium => "300x300>", :quadratic => "200x200#" }
+                    :styles => { :medium => "300x300>", :quadratic => "200x200#", :thumb => "50x50#" }
 
   def next
     Folder.where("id > ?", self.id).order("id ASC").first

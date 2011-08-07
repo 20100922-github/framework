@@ -28,6 +28,7 @@ Framework2::Application.routes.draw do
     member do
       get 'download_medium'
       get 'download_quadratic'
+      get 'download_thumb'
     end
   end
 

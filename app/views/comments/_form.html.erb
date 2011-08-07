@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :medium_id %><br />
-    <%= f.collection_select(:medium_id, Medium.all, :id, :file_file_name) %>
+    <%= f.collection_select(:medium_id, Medium.all, :id, :id) %>
   </div>
   <div class="actions">
     <%= f.submit %>
