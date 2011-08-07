@@ -12,10 +12,10 @@
   </tr>
 
 <% @comments.each do |comment| %>
-  <tr>
+  <tr class="<%= cycle("odd", "even") %>">
     <td><%= comment.text %></td>
     <td><%= comment.user.username %></td>
-    <td><span class="thumbs"><%= image_tag(comment.medium.file.url(:thumb)) %></span></td>
+    <td><span class="thumbs"><%= link_to image_tag(comment.medium.file.url(:thumb)), medium_path(comment.medium) %></span></td>
     <td><%= link_to comment.medium.folder.name, comment.medium.folder %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
     <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -10,7 +10,7 @@
   </tr>
 
 <% @tags.each do |tag| %>
-  <tr>
+  <tr class="<%= cycle("odd", "even") %>">
     <td><%= link_to tag.name, tag_path(tag) %></td>
     <td><%= tag.media.size %></td>
     <td><%= link_to 'Edit', edit_tag_path(tag) %></td>

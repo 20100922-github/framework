@@ -87,10 +87,13 @@ div.cover img {
   box-shadow: 0px 8px 8px #666, 0px -1px 8px #666;
   padding: 5px 5px 20px 5px;
 }
-span.thumbs img {
+.cover:hover a img {
+  box-shadow: 0px 0px 0px #fff;
+}
+.thumbs img {
   box-shadow: 0px 8px 8px #666, 0px -1px 8px #666;
 }
-span.thumbs:hover a img {
+.thumbs:hover a img {
   box-shadow: 0px 0px 0px #fff;
 }
 div.header, div.content {
@@ -110,9 +113,9 @@ div.new span {
   top: 42px;
 }
 /* lists - begin */
-div.even {
+.even {
 }
-div.odd {
+.odd {
   background-color: #ffc;
 }
 /* lists - end */

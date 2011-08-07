@@ -15,8 +15,8 @@
   </tr>
 
 <% @media.each do |medium| %>
-  <tr>
-    <td><%= link_to image_tag(medium.file.url(:thumb)), medium %></td>
+  <tr class="<%= cycle("odd", "even") %>">
+    <td class="thumbs"><%= link_to image_tag(medium.file.url(:thumb)), medium %></td>
     <td><%= medium.note %></td>
     <td><%= link_to medium.folder.name, folder_path(medium.folder) %></td>
     <td><% for tag in medium.tags %><%= link_to tag.name, tag_path(tag) %> <% end %></td>
