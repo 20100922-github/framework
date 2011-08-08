@@ -64,6 +64,10 @@ class FoldersController < ApplicationController
 
     respond_to do |format|
       if @folder.save
+        @users = User.all
+        @users.each do |u|
+          FolderMailer.notify_new_folder(@folder,u).deliver
+        end
         format.html { redirect_to(@folder, :notice => 'Folder was successfully created.') }
         format.xml  { render :xml => @folder, :status => :created, :location => @folder }
       else

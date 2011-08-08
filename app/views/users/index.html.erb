@@ -7,6 +7,7 @@
   <div class="tr middle">
     <div class="td center">Email</div>
     <div class="td center">Username</div>
+    <div class="td center">Roles</div>
     <div class="td center">Folders created</div>
     <div class="td center"></div>
     <div class="td center"></div>
@@ -16,6 +17,7 @@
   <div class="tr middle <%= cycle("odd", "even") %>">
     <div class="td center"><%= user.email %></div>
     <div class="td center"><%= user.username %></div>
+    <div class="td center"><% user.roles.each do |r| %><%= link_to r.name, role_path(r) %> <% end %></div>
     <div class="td center"><% for folder in user.folders %><%= link_to folder.name, folder_path(folder) %> <% end %></div>
     <div class="td center"><%= link_to 'Show', user %></div>
     <div class="td center"><%= link_to 'Edit', edit_user_path(user) %></div>
