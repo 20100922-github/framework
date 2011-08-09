@@ -5,7 +5,6 @@ Framework2::Application.routes.draw do
 
   resources :permissions
 
-  resources :media
   resources :media do
     member do
       get 'download_original'
@@ -23,12 +22,19 @@ Framework2::Application.routes.draw do
 
   resources :tags
 
-  resources :folders
   resources :folders do
     member do
       get 'download_medium'
       get 'download_quadratic'
       get 'download_thumb'
+    end
+    resources :media do
+      member do
+        get 'download_original'
+        get 'download_medium'
+        get 'download_thumb'
+        get 'download_quadratic'
+      end
     end
   end
 
