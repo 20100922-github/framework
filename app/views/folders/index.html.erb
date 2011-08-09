@@ -3,6 +3,7 @@
 <% if can? :create, Folder %>
   <%= link_to 'New Folder', new_folder_path %><br/>
 <% end %>
+<p><%= will_paginate @folders %></p>
 <% @folders.each do |f| %>
   <div class="folder">
     <div>
@@ -10,6 +11,7 @@
         <%= link_to image_tag(f.cover.url(:quadratic)), f %>
       </div>
     </div>
-    <div><%= link_to f.name, f %></div>
+    <div><%= link_to "#{f.name} (#{f.media.size})", f %></div>
   </div>
 <% end %>
+<p><%= will_paginate @folders %></p>

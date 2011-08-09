@@ -19,8 +19,7 @@
     <%= f.file_field :file %>
   </div>
   <div class="field">
-    <%= f.label :folder_id %><br />
-    <%= f.collection_select(:folder_id, Folder.all, :id, :name) %>
+    <%= f.hidden_field :folder_id, :value => params[:folder_id] %>
   </div>
   <div class="field">
     <% for tag in @tags %>

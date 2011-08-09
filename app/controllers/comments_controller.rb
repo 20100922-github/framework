@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
   def index
-    @comments = Comment.accessible_by(current_ability).order("created_at DESC")
+    @comments = Comment.accessible_by(current_ability).paginate :page => params[:page], :order => "created_at DESC", :per_page => 10
 
     respond_to do |format|
       format.html # index.html.erb
@@ -48,6 +48,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        @users = User.all
+        @users.each do |u|
+          CommentMailer.notify_new_comment(@comment,u).deliver
+        end
         format.html { redirect_to(@comment, :notice => 'Comment was successfully created.') }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else

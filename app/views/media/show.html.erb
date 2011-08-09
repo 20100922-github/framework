@@ -6,10 +6,24 @@
   <%= image_tag @medium.file.url(:medium) %>
 </div>
 <div>
-  <%= link_to "Add comment", new_comment_path %><br/>
+  <%= link_to "Add comment", new_medium_comment_path(@medium) %><br/>
   <% @medium.comments.order("created_at DESC").each do |c| %>
     On <%= c.created_at.to_formatted_s(:short) %>: <%= c.user.username %> said "<%= c.text %>"<br/>
   <% end %>
+</div>
+<div class="td center">
+  <ul>
+  <% @medium.tags.each do |t| %>
+    <li><%= link_to t.name, tag_path(t) %></li>
+  <% end %>
+  </ul>
+</div>
+<div class="td center">
+  <ul>
+  <% @medium.folder.roles.each do |r| %>
+    <li><%= link_to r.name, role_path(r) %></li>
+  <% end %>
+  </ul>
 </div>
 <div class="actions">
   <%= link_to image_tag("previous_48x48.png"), medium_path(@medium.previous) %>

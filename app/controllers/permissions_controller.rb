@@ -2,7 +2,7 @@ class PermissionsController < ApplicationController
   # GET /permissions
   # GET /permissions.xml
   def index
-    @permissions = Permission.all
+    @permissions = Permission.accessible_by(current_ability).paginate :page => params[:page], :order => "created_at DESC", :per_page => 10
 
     respond_to do |format|
       format.html # index.html.erb

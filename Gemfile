@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'will_paginate'
 gem 'paperclip'
 gem 'devise'
 gem 'cancan'

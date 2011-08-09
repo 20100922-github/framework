@@ -26,7 +26,7 @@ class MediaController < ApplicationController
   # GET /media
   # GET /media.xml
   def index
-    @media = Medium.accessible_by(current_ability).order("created_at DESC")
+    @media = Medium.accessible_by(current_ability).paginate :page => params[:page], :order => "created_at DESC", :per_page => 10
     @tags = Tag.all
 
     respond_to do |format|
@@ -72,8 +72,8 @@ class MediaController < ApplicationController
 
     respond_to do |format|
       if @medium.save
-        format.html { redirect_to(@medium, :notice => 'Medium was successfully created.') }
-        format.xml  { render :xml => @medium, :status => :created, :location => @medium }
+        format.html { redirect_to(@medium.folder, :notice => 'Medium was successfully created.') }
+        format.xml  { render :xml => @medium.folder, :status => :created, :location => @medium }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @medium.errors, :status => :unprocessable_entity }

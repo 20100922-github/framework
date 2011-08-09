@@ -16,12 +16,10 @@
     <%= f.text_area :text %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.collection_select(:user_id, User.all, :id, :username) %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
   <div class="field">
-    <%= f.label :medium_id %><br />
-    <%= f.collection_select(:medium_id, Medium.all, :id, :id) %>
+    <%= f.hidden_field :medium_id, :value => params[:medium_id] %>
   </div>
   <div class="actions">
     <%= f.submit %>

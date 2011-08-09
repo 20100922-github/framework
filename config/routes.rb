@@ -12,6 +12,7 @@ Framework2::Application.routes.draw do
       get 'download_thumb'
       get 'download_quadratic'
     end
+    resources :comments
   end
 
   devise_for :users
@@ -35,6 +36,7 @@ Framework2::Application.routes.draw do
         get 'download_thumb'
         get 'download_quadratic'
       end
+      resources :comments
     end
   end
 

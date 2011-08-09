@@ -6,7 +6,7 @@ class RolesController < ApplicationController
   # GET /roles
   # GET /roles.xml
   def index
-    @roles = Role.all
+    @roles = Role.accessible_by(current_ability).paginate :page => params[:page], :order => "name ASC", :per_page => 10
 
     respond_to do |format|
       format.html # index.html.erb

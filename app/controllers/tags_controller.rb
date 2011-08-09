@@ -6,7 +6,7 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.xml
   def index
-    @tags = Tag.all
+    @tags = Tag.accessible_by(current_ability).paginate :page => params[:page], :order => "name ASC", :per_page => 10
 
     respond_to do |format|
       format.html # index.html.erb

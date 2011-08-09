@@ -11,10 +11,12 @@
     <%= link_to u.username, u %>
   <% end %>
 </p>
-<b>Folders:</b>
+<b>Folders that can be accessed:</b>
+  <ul>
   <% @role.folders.each do |f| %>
-    <%= link_to f.name, f %>
+    <li><%= link_to f.name, f %></li>
   <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_role_path(@role) %> |
