@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110809175610) do
+ActiveRecord::Schema.define(:version => 20110810044926) do
 
   create_table "comments", :force => true do |t|
     t.text     "text"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(:version => 20110809175610) do
   end
 
   create_table "media", :force => true do |t|
-    t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "file_file_name"

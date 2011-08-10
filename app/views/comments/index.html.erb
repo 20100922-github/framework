@@ -8,6 +8,7 @@
   <div class="tr middle">
     <div class="td center">Text</div>
     <div class="td center">User</div>
+    <div class="td center">Created at</div>
     <div class="td center">Medium</div>
     <div class="td center">Folder</div>
     <div class="td center"></div>
@@ -17,6 +18,7 @@
   <div class="tr middle <%= cycle("odd", "even") %>">
     <div class="td center"><%= comment.text %></div>
     <div class="td center"><%= comment.user.username %></div>
+    <div class="td center"><%= comment.created_at.to_formatted_s(:short) %></div>
     <div class="td center"><span class="thumbs"><%= link_to image_tag(comment.medium.file.url(:thumb)), medium_path(comment.medium) %></span></div>
     <div class="td center"><%= link_to comment.medium.folder.name, comment.medium.folder %></div>
     <div class="td center"><%= link_to 'Edit', edit_comment_path(comment) %></div>

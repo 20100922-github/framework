@@ -23,8 +23,7 @@
     <%= f.file_field :cover %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.collection_select(:user_id, User.all, :id, :username) %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
   <div class="field">
     <%= f.label :role_id %><br />

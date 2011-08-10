@@ -15,9 +15,23 @@
         <span>
           <%= link_to image_tag("add_48x48.png"), new_folder_medium_path(@folder) %>
           </span>
-      </div>
+        </div>
+        <div>
+          User that has created this folder:<br/>
+          <%= @folder.user.username %>
+        </div>
+        <div>
+          Tags media inside this folder are associated to:<br/>
+          <ul>
+          <% @folder.media.each do |m| %>
+            <% m.tags.each do |t| %>
+              <li><%= link_to t.name, t %></li>
+            <% end %>
+          <% end %>
+        </ul>
+        </div>
       <div>
-        <%= image_tag "access_48x48.png" %>
+        Roles that can access this folder:<br/>
         <ul>
         <% @folder.roles.each do |r| %>
           <li><%= link_to r.name, r %></li>

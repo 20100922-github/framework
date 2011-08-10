@@ -11,14 +11,16 @@
     On <%= c.created_at.to_formatted_s(:short) %>: <%= c.user.username %> said "<%= c.text %>"<br/>
   <% end %>
 </div>
-<div class="td center">
+<div>
+  Tags that are associated with this medium:<br/>
   <ul>
   <% @medium.tags.each do |t| %>
     <li><%= link_to t.name, tag_path(t) %></li>
   <% end %>
   </ul>
 </div>
-<div class="td center">
+<div>
+  Roles that can access this medium:<br/>
   <ul>
   <% @medium.folder.roles.each do |r| %>
     <li><%= link_to r.name, role_path(r) %></li>
