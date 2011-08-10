@@ -10,6 +10,7 @@
       <div class="cover">
         <%= link_to image_tag(f.cover.url(:quadratic)), f %>
       </div>
+      <div><% if f.created_at > current_user.last_sign_in_at %><%= image_tag "new_64x64.png" %><% end %></div>
     </div>
     <div><%= link_to "#{f.name} (#{f.media.size})", f %></div>
   </div>

@@ -6,21 +6,25 @@
 <p><%= will_paginate @media %></p>
 <div class="table">
   <div class="tr middle">
+    <div class="td center"></div>
     <div class="td center">File</div>
     <div class="td center">Folder</div>
     <div class="td center"># Tags</div>
     <div class="td center"># Comments</div>
     <div class="td center"># Roles that can access Medium</div>
+    <div class="td center">Created at</div>
     <div class="td center"></div>
     <div class="td center"></div>
   </div>
 <% @media.each do |medium| %>
   <div class="tr middle <%= cycle("odd", "even") %>">
+    <div class="td center"><% if medium.created_at > current_user.last_sign_in_at %><%= image_tag "new_64x64.png" %><% end %></div>
     <div class="td center thumbs"><%= link_to image_tag(medium.file.url(:thumb)), medium %></div>
     <div class="td center"><%= link_to medium.folder.name, folder_path(medium.folder) %></div>
     <div class="td center"><%= medium.tags.size %></div>
     <div class="td center"><%= medium.comments.size %></div>
     <div class="td center"><%= medium.folder.roles.size %></div>
+    <div class="td center"><%= medium.created_at %></div>
     <div class="td center"><%= link_to 'Edit', edit_medium_path(medium) %></div>
     <div class="td center"><%= link_to 'Destroy', medium, :confirm => 'Are you sure?', :method => :delete %></div>
   </div>
