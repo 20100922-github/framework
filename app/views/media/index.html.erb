@@ -1,33 +1,34 @@
 <h1>Listing media</h1>
 
 <% if can? :create, Medium %>
-  <%= link_to 'New Medium', new_medium_path %><br/>
+<div><%= link_to 'New Medium', new_medium_path %></div>
 <% end %>
-<p><%= will_paginate @media %></p>
+
+<div><%= will_paginate @media %></div>
+
 <div class="table">
-  <div class="tr middle">
-    <div class="td center"></div>
-    <div class="td center">File</div>
-    <div class="td center">Folder</div>
-    <div class="td center"># Tags</div>
-    <div class="td center"># Comments</div>
-    <div class="td center"># Roles that can access Medium</div>
-    <div class="td center">Created at</div>
-    <div class="td center"></div>
-    <div class="td center"></div>
+  <div class="tr">
+    <div class="th">File</div>
+    <div class="th">Folder</div>
+    <div class="th"># Tags</div>
+    <div class="th"># Comments</div>
+    <div class="th"># Roles that can access Medium</div>
+    <div class="th">Created at</div>
+    <div class="th"></div>
+    <div class="th"></div>
   </div>
 <% @media.each do |medium| %>
-  <div class="tr middle <%= cycle("odd", "even") %>">
-    <div class="td center"><% if medium.created_at > current_user.last_sign_in_at %><%= image_tag "new_64x64.png" %><% end %></div>
-    <div class="td center thumbs"><%= link_to image_tag(medium.file.url(:thumb)), medium %></div>
-    <div class="td center"><%= link_to medium.folder.name, folder_path(medium.folder) %></div>
-    <div class="td center"><%= medium.tags.size %></div>
-    <div class="td center"><%= medium.comments.size %></div>
-    <div class="td center"><%= medium.folder.roles.size %></div>
-    <div class="td center"><%= medium.created_at %></div>
-    <div class="td center"><%= link_to 'Edit', edit_medium_path(medium) %></div>
-    <div class="td center"><%= link_to 'Destroy', medium, :confirm => 'Are you sure?', :method => :delete %></div>
+  <div class="tr <%= cycle('odd', 'even') %>">
+    <div class="td thumbs"><%= link_to image_tag(medium.file.url(:thumb)), medium %></div>
+    <div class="td"><%= link_to medium.folder.name, folder_path(medium.folder) %></div>
+    <div class="td"><%= medium.tags.size %></div>
+    <div class="td"><%= medium.comments.size %></div>
+    <div class="td"><%= medium.folder.roles.size %></div>
+    <div class="td"><%= distance_of_time_in_words(Time.now, medium.created_at) %></div>
+    <div class="td"><%= link_to 'Edit', edit_medium_path(medium) %></div>
+    <div class="td"><%= link_to 'Destroy', medium, :confirm => 'Are you sure?', :method => :delete %></div>
   </div>
 <% end %>
 </div>
-<p><%= will_paginate @media %></p>
+
+<div><%= will_paginate @media %></div>

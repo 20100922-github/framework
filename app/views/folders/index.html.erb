@@ -1,18 +1,25 @@
 <h1>Listing folders</h1>
 
 <% if can? :create, Folder %>
-  <%= link_to 'New Folder', new_folder_path %><br/>
+<div><%= link_to 'New Folder', new_folder_path %></div>
 <% end %>
-<p><%= will_paginate @folders %></p>
-<% @folders.each do |f| %>
-  <div class="folder">
-    <div>
-      <div class="cover">
-        <%= link_to image_tag(f.cover.url(:quadratic)), f %>
-      </div>
-      <div><% if f.created_at > current_user.last_sign_in_at %><%= image_tag "new_64x64.png" %><% end %></div>
+
+<div><%= will_paginate @folders %></div>
+
+<div class="table">
+<% @folders.each_with_index do |f,i| %>
+  <% if i%3 == 0 %>
+  <div class="tr">
+  <% end %>
+    <div class="td cover">
+      <div><%= link_to image_tag(f.cover.url(:quadratic)), f %></div>
+      <div><%= distance_of_time_in_words(Time.now, f.created_at) %> ago</div>
+      <div><%= link_to "#{f.name} (#{f.media.size})", f %></div>
     </div>
-    <div><%= link_to "#{f.name} (#{f.media.size})", f %></div>
+  <% if ( i%3 == 2 ) || ( i+1 == @folders.size ) %>
   </div>
+  <% end %>
 <% end %>
-<p><%= will_paginate @folders %></p>
+</div>
+
+<div><%= will_paginate @folders %></div>

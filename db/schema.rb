@@ -20,11 +20,6 @@ ActiveRecord::Schema.define(:version => 20110810044926) do
     t.integer  "medium_id"
   end
 
-  create_table "comments_media", :id => false, :force => true do |t|
-    t.integer "comment_id", :null => false
-    t.integer "medium_id",  :null => false
-  end
-
   create_table "folders", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"

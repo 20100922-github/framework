@@ -1,27 +1,30 @@
 <h1>Listing roles</h1>
 
 <% if can? :create, Role %>
-  <%= link_to 'New Role', new_role_path %>
+<div><%= link_to 'New Role', new_role_path %></div>
 <% end %>
-<p><%= will_paginate @roles %></p>
+
+<div><%= will_paginate @roles %></div>
+
 <div class="table">
-  <div class="tr middle">
-    <div class="td center">Name</div>
-    <div class="td center">Description</div>
-    <div class="td center"># Folders that can be accessed</div>
-    <div class="td center"></div>
-    <div class="td center"></div>
-    <div class="td center"></div>
+  <div class="tr">
+    <div class="th">Name</div>
+    <div class="th">Description</div>
+    <div class="th"># Folders that can be accessed</div>
+    <div class="th"></div>
+    <div class="th"></div>
+    <div class="th"></div>
   </div>
 <% @roles.each do |role| %>
-  <div class="tr middle <%= cycle("odd", "even") %>">
-    <div class="td center"><%= role.name %></div>
-    <div class="td center"><%= role.description %></div>
-    <div class="td center"><%= role.folders.size %></div>
-    <div class="td center"><%= link_to 'Show', role %></div>
-    <div class="td center"><%= link_to 'Edit', edit_role_path(role) %></div>
-    <div class="td center"><%= link_to 'Destroy', role, :confirm => 'Are you sure?', :method => :delete %></div>
+  <div class="tr <%= cycle("odd", "even") %>">
+    <div class="td"><%= role.name %></div>
+    <div class="td"><%= role.description %></div>
+    <div class="td"><%= role.folders.size %></div>
+    <div class="td"><%= link_to 'Show', role %></div>
+    <div class="td"><%= link_to 'Edit', edit_role_path(role) %></div>
+    <div class="td"><%= link_to 'Destroy', role, :confirm => 'Are you sure?', :method => :delete %></div>
   </div>
 <% end %>
 </div>
-<p><%= will_paginate @roles %></p>
+
+<div><%= will_paginate @roles %></div>

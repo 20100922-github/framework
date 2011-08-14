@@ -1,7 +1,6 @@
 planned todos/features:
 
 - rubrik, in der alle fotos angezeigt werden, die seit dem letzten login hochgeladen wurden
-- shadows on images
-- old-school photo style (ie. white border around image)
 - paperclip interpolation for storage of images: something planned like private/<username>/<datum>/...
-- comments for media (multiple users can comment on media)
+- media bulk upload
+- css hover icons

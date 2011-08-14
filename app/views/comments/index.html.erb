@@ -1,31 +1,32 @@
 <h1>Listing comments</h1>
 
 <% if can? :create, Comment %>
-  <%= link_to 'New Comment', new_comment_path %><br/>
+<div><%= link_to 'New Comment', new_comment_path %></div>
 <% end %>
-<p><%= will_paginate @comments %></p>
+
+<div><%= will_paginate @comments %></div>
+
 <div class="table">
-  <div class="tr middle">
-    <div class="td center"></div>
-    <div class="td center">Text</div>
-    <div class="td center">User</div>
-    <div class="td center">Created at</div>
-    <div class="td center">Medium</div>
-    <div class="td center">Folder</div>
-    <div class="td center"></div>
-    <div class="td center"></div>
+  <div class="tr">
+    <div class="th">Text</div>
+    <div class="th">User</div>
+    <div class="th">Created at</div>
+    <div class="th">Medium</div>
+    <div class="th">Folder</div>
+    <div class="th"></div>
+    <div class="th"></div>
   </div>
 <% @comments.each do |comment| %>
-  <div class="tr middle <%= cycle("odd", "even") %>">
-    <div class="td center"><% if comment.created_at > current_user.last_sign_in_at %><%= image_tag "new_64x64.png" %><% end %></div>
-    <div class="td center"><%= comment.text %></div>
-    <div class="td center"><%= comment.user.username %></div>
-    <div class="td center"><%= comment.created_at.to_formatted_s(:short) %></div>
-    <div class="td center"><span class="thumbs"><%= link_to image_tag(comment.medium.file.url(:thumb)), medium_path(comment.medium) %></span></div>
-    <div class="td center"><%= link_to comment.medium.folder.name, comment.medium.folder %></div>
-    <div class="td center"><%= link_to 'Edit', edit_comment_path(comment) %></div>
-    <div class="td center"><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></div>
+  <div class="tr <%= cycle('odd', 'even') %>">
+    <div class="td"><%= comment.text %></div>
+    <div class="td"><%= comment.user.username %></div>
+    <div class="td"><%= distance_of_time_in_words(Time.now, comment.created_at) %></div>
+    <div class="td thumbs"><%= link_to image_tag(comment.medium.file.url(:thumb)), medium_path(comment.medium) %></div>
+    <div class="td"><%= link_to comment.medium.folder.name, comment.medium.folder %></div>
+    <div class="td"><%= link_to 'Edit', edit_comment_path(comment) %></div>
+    <div class="td"><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></div>
   </div>
 <% end %>
 </div>
-<p><%= will_paginate @comments %></p>
+
+<div><%= will_paginate @comments %></div>

@@ -1,27 +1,27 @@
 <h1>Listing permissions</h1>
 
 <p><%= will_paginate @permissions %></p>
-<table>
-  <tr>
-    <th>Action</th>
-    <th>Subject class</th>
-    <th>Subject</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="table">
+  <div class="tr">
+    <div class="th">Action</div>
+    <div class="th">Subject class</div>
+    <div class="th">Subject</div>
+    <div class="th"></div>
+    <div class="th"></div>
+    <div class="th"></div>
+  </div>
 
 <% @permissions.each do |permission| %>
-  <tr>
-    <td><%= permission.action %></td>
-    <td><%= permission.subject_class %></td>
-    <td><%= permission.subject_id %></td>
-    <td><%= link_to 'Show', permission %></td>
-    <td><%= link_to 'Edit', edit_permission_path(permission) %></td>
-    <td><%= link_to 'Destroy', permission, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <div class="tr">
+    <div class="td"><%= permission.action %></div>
+    <div class="td"><%= permission.subject_class %></div>
+    <div class="td"><%= permission.subject_id %></div>
+    <div class="td"><%= link_to 'Show', permission %></div>
+    <div class="td"><%= link_to 'Edit', edit_permission_path(permission) %></div>
+    <div class="td"><%= link_to 'Destroy', permission, :confirm => 'Are you sure?', :method => :delete %></div>
+  </div>
 <% end %>
-</table>
+</div>
 
 <br />
 

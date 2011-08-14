@@ -1,25 +1,28 @@
 <h1>Listing tags</h1>
 
 <% if can? :create, Tag %>
-  <%= link_to 'New Tag', new_tag_path %>
+<div><%= link_to 'New Tag', new_tag_path %></div>
 <% end %>
-<p><%= will_paginate @tags %></p>
+
+<div><%= will_paginate @tags %></div>
+
 <div class="table">
-  <div class="tr middle">
-    <div class="td center"></div>
-    <div class="td center">Name</div>
-    <div class="td center"># Media</div>
-    <div class="td center"></div>
-    <div class="td center"></div>
+  <div class="tr">
+    <div class="th">Name</div>
+    <div class="th"># Media</div>
+    <div class="th">Created at</div>
+    <div class="th"></div>
+    <div class="th"></div>
   </div>
 <% @tags.each do |tag| %>
-  <div class="tr middle <%= cycle("odd", "even") %>">
-    <div class="td center"><% if tag.created_at > current_user.last_sign_in_at %><%= image_tag "new_64x64.png" %><% end %></div>
-    <div class="td center"><%= link_to tag.name, tag_path(tag) %></div>
-    <div class="td center"><%= tag.media.size %></div>
-    <div class="td center"><%= link_to 'Edit', edit_tag_path(tag) %></div>
-    <div class="td center"><%= link_to 'Destroy', tag, :confirm => 'Are you sure?', :method => :delete %></div>
+  <div class="tr <%= cycle('odd', 'even') %>">
+    <div class="td"><%= link_to tag.name, tag_path(tag) %></div>
+    <div class="td"><%= tag.media.size %></div>
+    <div class="td"><%= distance_of_time_in_words(Time.now, tag.created_at) %> ago</div>
+    <div class="td"><%= link_to 'Edit', edit_tag_path(tag) %></div>
+    <div class="td"><%= link_to 'Destroy', tag, :confirm => 'Are you sure?', :method => :delete %></div>
   </div>
 <% end %>
 </div>
-<p><%= will_paginate @tags %></p>
+
+<div><%= will_paginate @tags %></div>

@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
-  <%= link_to('Logout', destroy_user_session_path, :method => 'delete') %>
+  <%= link_to image_tag("logout_32x32.png"), destroy_user_session_path, :method => 'delete' %>
   <%= current_user.username %>
   (<%= current_user.roles.collect{|r| r.name} %>)
 <% else %>
-  <%= link_to('Login', new_user_session_path)  %>
+  <%= link_to image_tag("login_32x32.png"), new_user_session_path  %>
 <% end %>

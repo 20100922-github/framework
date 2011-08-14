@@ -1,88 +1,73 @@
-/* bars -- begin */
-/*
-div.bar {
-  opacity: 0.95;
-  position: absolute;
-  top: 0px;
-  height: 90px;
-  padding: 10px;
-  border-left: 3px solid;
-  border-bottom: 3px solid;
-  border-right: 3px solid;
-}
-div.info.bar {
-  left: 25%;
-  background-color: #ffc;
-  border-bottom-left-radius: 20px;
-  border-color: #cc0;
-  z-index: 1;
-}
-div.error.bar {
-  left: 25%;
-  background-color: #fcc;
-  border-bottom-left-radius: 20px;
-  border-color: #c00;
-  z-index: 1;
-}
-  */
-/* bars -- end */
-
-/* menu -- begin */
-/*
-div.menu.bar {
-  right: 25%;
-  background-color: #ccf;
-  border-bottom-right-radius: 20px;
-  border-color: #00c;
-  z-index: 2;
-}
-div.menu img {
-  line-height: 64px;
-  float: right;
-}
-div.menu span {
-  display: none;
-  padding-right: 10px;
-  width: 300px;
-}
-div.menu:hover span {
-  display: inline-block;
-}
-  */
-/* menu -- end */
-
-
-div.table {
-  display: table; border-collapse: collapse;
+/* tables - begin */
+.table {
+  display: table;
+  border-collapse: collapse;
   width: 100%;
 }
-div.tr.top, div.tr.middle, div.tr.bottom {
+.tr {
   display: table-row;
+  padding: 20px;
 }
-div.tr.top, div.tr.bottom {
-}
-div.td.left, div.td.center, div.td.right {
+.th, .td {
   display: table-cell;
+  text-align: center;
   vertical-align: middle;
 }
-div.td.left, div.td.right {
-  width: 10%;
+.th {
+  font-weight: bold;
 }
+.even {
+}
+.odd {
+  background-color: #ffc;
+}
+.left {
+  text-align: left;
+}
+.dashboard {
+  width: 17%;
+}
+/* tables - end */
 
-
-
-div.folder {
-  position: relative;
+/* general layout - begin */
+body {
+  width: 100%;
+}
+div.borders {
+  position: absolute;
+  width: 900px;
+  left: 50%;
+  margin-left: -450px;
+  box-shadow: 0px 0px 8px #666;
+  border-radius: 0px 0px 8px 8px;
+  padding: 20px;
+}
+div.content {
+  clear: both;
+  top: 160px;
+}
+div.info {
+  height: 40px;
+  top: 80px;
+  line-height: 40px;
+  vertical-align: middle;
+}
+div.menu {
+  height: 40px;
+  top: 0px;
+  vertical-align: middle;
+  line-height: 20px;
+}
+div.menu div {
   float: left;
-  padding: 50px;
-  text-align: center;
+  padding: 20px;
+  display: inline-block;
 }
-div.folder div + div {
-  padding-top: 20px;
-}
-.cover.float {
-  float: left;
-  margin-right: 50px;
+/* general layout - end */
+
+/* images - begin */
+.cover {
+  padding: 20px 0px 0px 0px;
 }
 .cover img {
   box-shadow: 0px 8px 8px #666, 0px -1px 8px #666;
@@ -97,38 +82,4 @@ div.folder div + div {
 .thumbs:hover a img {
   box-shadow: 0px 0px 0px #fff;
 }
-div.header, div.content {
-  padding-bottom: 20px;
-}
-
-/* new - begin */
-.dashboard.cover {
-  position: relative;
-  padding-bottom: 40px;
-}
-div.new {
-  position: absolute;
-  top: -30px;
-  left: 170px;
-  padding: 0px;
-}
-div.new span {
-  position: absolute;
-  color: white;
-  font-weight: bold;
-  left: 25px;
-  top: 27px;
-}
-/* new - end */
-
-/* lists - begin */
-.even {
-}
-.odd {
-  background-color: #ffc;
-}
-/* lists - end */
-
-.actions {
-  clear: both;
-}
+/* images - end */
