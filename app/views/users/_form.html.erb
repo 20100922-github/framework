@@ -32,6 +32,12 @@
     <%= role.name %>
   </div>
   <% end %>
+  <% for group in Group.find(:all) %>
+  <div>
+    <%= check_box_tag "user[group_ids][]", group.id, @user.groups.include?(group) %>
+    <%= group.name %>
+  </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

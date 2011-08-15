@@ -1,7 +1,7 @@
 <h1>Listing roles</h1>
 
 <% if can? :create, Role %>
-<div><%= link_to 'New Role', new_role_path %></div>
+<div><%= link_to image_tag("add_32x32.png"), new_role_path %></div>
 <% end %>
 
 <div><%= will_paginate @roles %></div>

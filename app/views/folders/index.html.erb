@@ -1,7 +1,7 @@
 <h1>Listing folders</h1>
 
 <% if can? :create, Folder %>
-<div><%= link_to 'New Folder', new_folder_path %></div>
+<div><%= link_to image_tag("add_32x32.png"), new_folder_path %></div>
 <% end %>
 
 <div><%= will_paginate @folders %></div>

@@ -1,7 +1,7 @@
 <h1>Listing comments</h1>
 
 <% if can? :create, Comment %>
-<div><%= link_to 'New Comment', new_comment_path %></div>
+<div><%= link_to image_tag("add_32x32.png"), new_comment_path %></div>
 <% end %>
 
 <div><%= will_paginate @comments %></div>

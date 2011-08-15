@@ -1,7 +1,7 @@
 <h1>Listing users</h1>
 
 <% if can? :create, User %>
-<div><%= link_to 'New User', new_user_path %></div>
+<div><%= link_to image_tag("add_32x32.png"), new_user_path %></div>
 <% end %>
 
 <div><%= will_paginate @users %></div>
@@ -25,7 +25,7 @@
     <div class="td"><% user.roles.each do |r| %><%= link_to r.name, role_path(r) %> <% end %></div>
     <div class="td"><% user.groups.each do |g| %><%= link_to g.name, group_path(g) %> <% end %></div>
     <div class="td"><%= user.folders.size %></div>
-    <div class="td"><%= distance_of_time_in_words(Time.now, user.last_sign_in_at) %></div>
+    <div class="td"><% if user.last_sign_in_at.nil? %>-<% else %><%= distance_of_time_in_words(Time.now, user.last_sign_in_at) %><% end %></div>
     <div class="td"><%= link_to 'Show', user %></div>
     <div class="td"><%= link_to 'Edit', edit_user_path(user) %></div>
     <div class="td"><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></div>
