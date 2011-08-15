@@ -1,49 +1,60 @@
 <div class="table">
   <div class="tr">
     <div class="td">
-      <div class="cover float">
-        <%= image_tag(@folder.cover.url(:medium)) %>
-      </div>
-      <div class="header"><%= @folder.name %></div>
-      <div class="content"><%= @folder.description %></div>
-      <div>
-        <% @media.each do |m| %>
-          <span class="thumbs">
-            <%= link_to image_tag(m.file.url(:quadratic)), m %>
-          </span>
-        <% end %>
-        <span>
-          <%= link_to image_tag("add_48x48.png"), new_folder_medium_path(@folder) %>
-          </span>
-        </div>
-        <div>
-          User that has created this folder:<br/>
-          <%= @folder.user.username %>
-        </div>
-        <div>
-          Tags media inside this folder are associated to:<br/>
-          <ul>
-          <% @folder.media.each do |m| %>
-            <% m.tags.each do |t| %>
-              <li><%= link_to t.name, t %></li>
-            <% end %>
-          <% end %>
-        </ul>
-        </div>
-      <div>
-        Roles that can access this folder:<br/>
-        <ul>
-        <% @folder.roles.each do |r| %>
-          <li><%= link_to r.name, r %></li>
-        <% end %>
-        </ul>
-      </div>
+      <div><%= link_to image_tag("up_48x48.png"), folders_path %></div>
       <div>
         <%= link_to image_tag("previous_48x48.png"), folder_path(@folder.previous) %>
-        <%= link_to image_tag("up_48x48.png"), folders_path %>
+        <%= image_tag(@folder.cover.url(:medium)) %>
         <%= link_to image_tag("next_48x48.png"), folder_path(@folder.next) %>
-        <%= link_to 'Edit', edit_folder_path(@folder) %> |
       </div>
     </div>
+    <div class="td left">
+      <% @media.each do |m| %>
+      <span class="thumbs"><%= link_to image_tag(m.file.url(:quadratic)), m %></span>
+      <% end %>
+      <span><%= link_to image_tag("add_48x48.png"), new_folder_medium_path(@folder) %></span>
+    </div>
+  </div>
+</div>
+<div class="table">
+  <div class="tr">
+    <div class="th left">Folder name:</div>
+    <div class="td left"><%= @folder.name %> (<%= link_to 'Edit', edit_folder_path(@folder) %>)</div>
+    <div class="th left">User that has created this folder:</div>
+    <div class="td left"><%= @folder.user.username %></div>
+  </div>
+  <div class="tr">
+    <div class="th left">Tags media inside this folder are associated to:</div>
+    <div class="td left">
+      <ul>
+      <% @folder.media.each do |m| %>
+      <% m.tags.each do |t| %>
+        <li><%= link_to t.name, t %></li>
+      <% end %>
+      <% end %>
+      </ul>
+    </div>
+    <div class="th left">Roles that can access this folder:</div>
+    <div class="td left">
+      <ul>
+      <% @folder.roles.each do |r| %>
+        <li><%= link_to r.name, r %></li>
+      <% end %>
+      </ul>
+    </div>
+    <div class="th left">Groups that can access this folder:</div>
+    <div class="td left">
+      <ul>
+      <% @folder.groups.each do |g| %>
+        <li><%= link_to g.name, g %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="table">
+  <div class="tr">
+    <div class="th left top">Description:</div>
+    <div class="td left"><%= @folder.description %></div>
   </div>
 </div>

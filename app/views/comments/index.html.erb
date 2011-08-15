@@ -18,7 +18,7 @@
   </div>
 <% @comments.each do |comment| %>
   <div class="tr <%= cycle('odd', 'even') %>">
-    <div class="td"><%= comment.text %></div>
+    <div class="td"><%= truncate(comment.text, :length => 50) %></div>
     <div class="td"><%= comment.user.username %></div>
     <div class="td"><%= distance_of_time_in_words(Time.now, comment.created_at) %></div>
     <div class="td thumbs"><%= link_to image_tag(comment.medium.file.url(:thumb)), medium_path(comment.medium) %></div>

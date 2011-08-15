@@ -23,7 +23,7 @@
       <div><%= distance_of_time_in_words(Time.now, c.created_at) %> ago</div>
       <div><%= link_to c.medium.folder.name, c.medium.folder %></div>
       <div><%= link_to c.user.username, c.user %></div>
-      <div>"<%= c.text %>"</div>
+      <div>"<%= truncate(c.text, :length => 50) %>"</div>
     </div>
 <% end %>
 <% end %>

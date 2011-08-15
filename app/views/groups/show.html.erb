@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @group.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @group.description %>
+</p>
+
+<b>Users that are associated to:</b>
+  <ul>
+  <% @group.users.each do |u| %>
+    <li><%= link_to u.username, u %></li>
+  <% end %>
+  </ul>
+</p>
+
+<b>Folders that can be accessed:</b>
+  <ul>
+  <% @group.folders.each do |f| %>
+    <li><%= link_to f.name, f %></li>
+  <% end %>
+  </ul>
+  </p>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

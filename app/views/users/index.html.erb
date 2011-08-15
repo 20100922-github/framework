@@ -11,6 +11,7 @@
     <div class="th">Email</div>
     <div class="th">Username</div>
     <div class="th">Roles</div>
+    <div class="th">Groups</div>
     <div class="th"># Folders created</div>
     <div class="th">Last log-in at</div>
     <div class="th"></div>
@@ -22,6 +23,7 @@
     <div class="td"><%= user.email %></div>
     <div class="td"><%= user.username %></div>
     <div class="td"><% user.roles.each do |r| %><%= link_to r.name, role_path(r) %> <% end %></div>
+    <div class="td"><% user.groups.each do |g| %><%= link_to g.name, group_path(g) %> <% end %></div>
     <div class="td"><%= user.folders.size %></div>
     <div class="td"><%= distance_of_time_in_words(Time.now, user.last_sign_in_at) %></div>
     <div class="td"><%= link_to 'Show', user %></div>

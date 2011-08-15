@@ -10,14 +10,21 @@
   <%= @user.username %>
 </p>
 
-<p>
-  <b>Roles:</b>
-  <ul>
+<b>Roles:</b>
+<ul>
   <% @user.roles.each do |r| %>
     <li><%= link_to r.name, role_path(r) %></li>
   <% end %>
-  </ul>
-  </p>
+</ul>
+</p>
+
+<b>Groups:</b>
+<ul>
+  <% @user.groups.each do |g| %>
+    <li><%= link_to g.name, group_path(g) %></li>
+  <% end %>
+</ul>
+</p>
 
 <p>
   <b>Folders created:</b>

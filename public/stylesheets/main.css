@@ -24,6 +24,9 @@
 .left {
   text-align: left;
 }
+.top {
+  vertical-align: top;
+}
 .dashboard {
   width: 17%;
 }
@@ -58,10 +61,8 @@ div.menu {
   vertical-align: middle;
   line-height: 20px;
 }
-div.menu div {
-  float: left;
+div.menu div.table {
   padding: 20px;
-  display: inline-block;
 }
 /* general layout - end */
 
