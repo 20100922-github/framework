@@ -12,7 +12,7 @@
     <div class="th">Folder</div>
     <div class="th"># Tags</div>
     <div class="th"># Comments</div>
-    <div class="th"># Roles that can access Medium</div>
+    <div class="th"># Groups that can access Medium</div>
     <div class="th">Created at</div>
     <div class="th"></div>
     <div class="th"></div>
@@ -23,7 +23,7 @@
     <div class="td"><%= link_to medium.folder.name, folder_path(medium.folder) %></div>
     <div class="td"><%= medium.tags.size %></div>
     <div class="td"><%= medium.comments.size %></div>
-    <div class="td"><%= medium.folder.roles.size %></div>
+    <div class="td"><%= medium.folder.groups.size %></div>
     <div class="td"><%= distance_of_time_in_words(Time.now, medium.created_at) %></div>
     <div class="td"><%= link_to 'Edit', edit_medium_path(medium) %></div>
     <div class="td"><%= link_to 'Destroy', medium, :confirm => 'Are you sure?', :method => :delete %></div>

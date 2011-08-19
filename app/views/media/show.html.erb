@@ -19,11 +19,21 @@
   <% end %>
   </ul>
 </div>
+<!--
 <div>
   Roles that can access this medium:<br/>
   <ul>
   <% @medium.folder.roles.each do |r| %>
     <li><%= link_to r.name, role_path(r) %></li>
+  <% end %>
+  </ul>
+</div>
+-->
+<div>
+  Groups that can access this medium:<br/>
+  <ul>
+  <% @medium.folder.groups.each do |g| %>
+    <li><%= link_to g.name, group_path(g) %></li>
   <% end %>
   </ul>
 </div>

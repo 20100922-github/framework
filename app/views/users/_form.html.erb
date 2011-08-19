@@ -26,12 +26,22 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
+  <div class="field">
+    <%= f.label "Assign Administrator role to this user?" %>
+    <%= f.radio_button :role_ids, [ Role.where("name = ?", "Users").first.id ], { :checked => true } %>
+    <%= f.label "No" %>
+    <%= f.radio_button :role_ids, [ Role.where("name = ?", "Users").first.id, Role.where("name = ?", "Administrator").first.id ] %>
+    <%= f.label "Yes" %>
+  </div>
+  <!--
   <% for role in Role.find(:all) %>
   <div>
     <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
     <%= role.name %>
   </div>
-  <% end %>
+<% end %>
+-->
+<%= f.label :groups %>
   <% for group in Group.find(:all) %>
   <div>
     <%= check_box_tag "user[group_ids][]", group.id, @user.groups.include?(group) %>
