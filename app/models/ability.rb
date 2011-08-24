@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
 
     user ||= User.new
-    if user.role? :admin
+    if user.role? :Administrator
       can :manage, :all
     elsif user.role? :registered
       can [:read, :download_medium, :download_quadratic], Folder, :roles => { :id => user.role_ids }

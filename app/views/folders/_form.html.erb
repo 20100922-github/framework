@@ -26,15 +26,6 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
   <div class="field">
-    <%= f.label :group_id %><br />
-    <% for group in Group.find(:all) %>
-      <div>
-        <%= check_box_tag "folder[group_ids][]", group.id, @folder.groups.include?(group) %>
-        <%= group.name %>
-      </div>
-    <% end %>
-  </div>
-  <div class="field">
     <%= f.label :role_id %><br />
     <% for role in Role.find(:all) %>
       <div>
