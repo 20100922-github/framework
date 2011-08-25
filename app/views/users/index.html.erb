@@ -25,8 +25,8 @@
     <div class="td"><%= user.folders.size %></div>
     <div class="td"><% if user.last_sign_in_at.nil? %>-<% else %><%= distance_of_time_in_words(Time.now, user.last_sign_in_at) %><% end %></div>
     <div class="td"><%= link_to 'Show', user %></div>
-    <div class="td"><%= link_to 'Edit', edit_user_path(user) %></div>
-    <div class="td"><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></div>
+    <div class="td"><% if can? :update, User %><%= link_to 'Edit', edit_user_path(user) %><% end %></div>
+    <div class="td"><% if can? :destroy, User %><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %><% end %></div>
   </div>
 <% end %>
 </div>

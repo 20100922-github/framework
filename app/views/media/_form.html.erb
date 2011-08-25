@@ -19,6 +19,7 @@
     <%= f.hidden_field :folder_id, :value => params[:folder_id] %>
   </div>
   <div class="field">
+    <%= f.label :tag %><br />
     <% for tag in @tags %>
     <input type="checkbox" id="<%= tag.id %>" name="tag_ids[]" value="<%= tag.id %>" <% if @medium.tags.include? tag %>checked="checked"<% end %>/> <%= tag.name %><br/>
     <% end %>

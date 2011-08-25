@@ -2,12 +2,10 @@
 <div class="table">
   <div class="tr">
 <% @folders.each_with_index do |f,i| %>
-<% if can? :read, f %>
     <div class="td thumbs left dashboard"><%= link_to image_tag(f.cover.url(:thumb)), f %>
       <div><%= distance_of_time_in_words(Time.now, f.created_at) %> ago</div>
       <div><%= link_to f.name, f %></div>
     </div>
-<% end %>
 <% end %>
     <div class="td"><%= link_to "Show all folders", folders_path %></div>
   </div>
@@ -17,14 +15,12 @@
 <div class="table">
   <div class="tr">
 <% @comments.each do |c| %>
-<% if can? :read, c %>
     <div class="td thumbs left dashboard"><%= link_to image_tag(c.medium.file.url(:quadratic)), c.medium %>
       <div><%= distance_of_time_in_words(Time.now, c.created_at) %> ago</div>
       <div><%= link_to c.medium.folder.name, c.medium.folder %></div>
       <div><%= link_to c.user.username, c.user %></div>
       <div>"<%= truncate(c.text, :length => 50) %>"</div>
     </div>
-<% end %>
 <% end %>
     <div class="td"><%= link_to "Show all comments", comments_path %></div>
   </div>

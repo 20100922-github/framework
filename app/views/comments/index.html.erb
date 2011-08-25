@@ -1,7 +1,7 @@
 <h1>Listing comments</h1>
 
 <% if can? :create, Comment %>
-<div><%= link_to image_tag("add_32x32.png"), new_comment_path %></div>
+  <!--<div><%= link_to image_tag("add_32x32.png"), new_comment_path %></div>-->
 <% end %>
 
 <div><%= will_paginate @comments %></div>
@@ -23,8 +23,8 @@
     <div class="td"><%= distance_of_time_in_words(Time.now, comment.created_at) %></div>
     <div class="td thumbs"><%= link_to image_tag(comment.medium.file.url(:thumb)), medium_path(comment.medium) %></div>
     <div class="td"><%= link_to comment.medium.folder.name, comment.medium.folder %></div>
-    <div class="td"><%= link_to 'Edit', edit_comment_path(comment) %></div>
-    <div class="td"><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></div>
+    <div class="td"><% if can? :update, Comment %><%= link_to 'Edit', edit_comment_path(comment) %><% end %></div>
+    <div class="td"><% if can? :destroy, Comment %><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %><% end %></div>
   </div>
 <% end %>
 </div>

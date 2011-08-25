@@ -12,12 +12,12 @@
     <div class="table">
       <div class="tr">
         <div class="td"><%= link_to image_tag("home_32x32.png"), root_path %></div>
-        <div class="td"><%= link_to 'folders', folders_path %></div>
-        <div class="td"><%= link_to 'tags', tags_path %></div>
-        <div class="td"><%= link_to 'media', media_path %></div>
-        <div class="td"><%= link_to 'comments', comments_path %></div>
-        <div class="td"><%= link_to 'users', users_path %></div>
-        <div class="td"><%= link_to 'roles', roles_path %></div>
+        <div class="td"><% if can? :read_all, Folder %><%= link_to 'folders', folders_path %><% end %></div>
+        <div class="td"><% if can? :read, Tag %><%= link_to 'tags', tags_path %><% end %></div>
+        <div class="td"><% if can? :read_all, Medium %><%= link_to 'media', media_path %><% end %></div>
+        <div class="td"><% if can? :read, Comment %><%= link_to 'comments', comments_path %><% end %></div>
+        <div class="td"><% if can? :read, User %><%= link_to 'users', users_path %><% end %></div>
+        <div class="td"><% if can? :read, Role %><%= link_to 'roles', roles_path %><% end %></div>
         <div class="td"><%= render 'devise/menu/login_items' %></div>
       </div>
     </div>
