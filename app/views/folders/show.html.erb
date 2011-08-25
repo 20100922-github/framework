@@ -42,14 +42,6 @@
       <% end %>
       </ul>
     </div>
-    <div class="th left">Groups that can access this folder:</div>
-    <div class="td left">
-      <ul>
-      <% @folder.groups.each do |g| %>
-        <li><%= link_to g.name, g %></li>
-      <% end %>
-      </ul>
-    </div>
   </div>
 </div>
 <div class="table">
