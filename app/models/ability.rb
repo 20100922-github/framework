@@ -15,9 +15,20 @@ class Ability
     else
 
       can :read_all, Folder, :roles => { :id => user.role_ids }
+      can :create, Folder
+      can [:update, :destroy], Folder, :user => user.id
+
       can :read_all, Medium, :folder => { :roles => { :id => user.role_ids }}
+      can :create, Medium
+      can [:update, :destroy], Medium, :folder => { :user => user.id }
+
       can :read, Comment, :medium => { :folder => { :roles => { :id => user.role_ids }}}
-      can :update, User, :id => user.id
+      can :create, Comment
+      can [:update, :destroy], Comment, :medium => { :folder => { :user => user.id }}
+
+      can :read, Tag
+
+      can [:read, :update], User, :id => user.id
       cannot :manage, [User, Role]
 
       if user.role? :Administrator
