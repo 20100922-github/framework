@@ -5,6 +5,7 @@
 <div class="cover float">
   <%= image_tag @medium.file.url(:medium) %>
 </div>
+<div><%= link_to "Download file at original size", @medium.file.url(:original) %></div>
 <div>
   <%= link_to "Add comment", new_medium_comment_path(@medium) %><br/>
   <% @medium.comments.order("created_at DESC").each do |c| %>

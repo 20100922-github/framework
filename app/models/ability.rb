@@ -10,6 +10,7 @@ class Ability
 
       can :read_all, Folder, :roles => { :name => "Public" }
       can :read_all, Medium, :folder => { :roles => { :name => "Public" }}
+      can :read, Tag, :media => { :folder => { :roles => { :name => "Public" }}}
       cannot :manage, [User, Role]
 
     else
