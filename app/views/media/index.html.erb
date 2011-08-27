@@ -1,9 +1,5 @@
 <h1>Listing media</h1>
 
-<% if can? :create, Medium %>
-<div><%= link_to image_tag("add_32x32.png"), new_medium_path %></div>
-<% end %>
-
 <div><%= will_paginate @media %></div>
 
 <div class="table">

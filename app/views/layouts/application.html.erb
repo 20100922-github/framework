@@ -23,20 +23,21 @@
     </div>
   </div>
 
+  <% if notice || alert %>
   <div class="info borders">
     <% if notice %>
     <div>
       <%= image_tag "info_32x32.png" %>
       <%= notice %>
     </div>
-    <% end %>
-    <% if alert %>
+    <% elsif alert %>
     <div>
       <%= image_tag "error_32x32.png" %>
       <%= alert %>
     </div>
     <% end %>
   </div>
+  <% end %>
 
   <div class="content borders">
     <%= yield %>

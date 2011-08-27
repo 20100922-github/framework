@@ -33,8 +33,12 @@ class Ability
       cannot :manage, [User, Role]
 
       if user.role? :Administrator
+
         cannot [:update, :destroy], Role, :name => "Administrator"
-        can :manage, :all
+        cannot [:update, :destroy], Role, :name => "Public"
+        can [:create, :read], Role
+        can :manage, [Folder, Medium, Tag, Comment, User]
+
       end
     end
 
