@@ -1,6 +1,54 @@
 <div class="table">
   <div class="tr">
     <div class="td">
+      <div class="cover float">
+        <%= image_tag(@folder.cover.url(:medium)) %>
+      </div>
+      <div class="foldername left"><%= @folder.name %> <% if can? :update, Folder %>(<%= link_to 'Edit', edit_folder_path(@folder) %>)<% end %></div>
+      <div class="left"><%= @folder.description %></div>
+    </div>
+  </div>
+  <div class="tr">
+    <div class="td">
+      <div class="table">
+        <div class="tr">
+          <div class="td left border">
+            <% @media.each do |m| %>
+            <span class="thumbs"><%= link_to image_tag(m.file.url(:quadratic)), m %></span>
+            <% end %>
+            <span><% if can? :create, Medium %><%= link_to image_tag("add_48x48.png"), new_folder_medium_path(@folder) %><% end %></span>
+          </div>
+          <div class="td top border">
+            <div class="table">
+              <div class="tr">
+                <div class="th left">Created by:</div>
+                <div class="td left"><%= @folder.user.username %></div>
+              </div>
+              <div class="tr">
+                <div class="th left">Tagged with:</div>
+                <div class="td left">
+                  <% @folder.media.each do |m| %>
+                  <%= m.tags.collect(&:name).join(", ") %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="tr">
+                <div class="th left">Accessible by:</div>
+                <div class="td left">
+                  <%= @folder.roles.collect(&:name).join(", ") %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+<div class="table">
+  <div class="tr">
+    <div class="td">
       <div><%= link_to image_tag("up_48x48.png"), folders_path %></div>
       <div>
         <%= link_to image_tag("previous_48x48.png"), folder_path(@folder.previous) %>
@@ -20,27 +68,19 @@
   <div class="tr">
     <div class="th left">Folder name:</div>
     <div class="td left"><%= @folder.name %> <% if can? :update, Folder %>(<%= link_to 'Edit', edit_folder_path(@folder) %>)<% end %></div>
-    <div class="th left">User that has created this folder:</div>
+    <div class="th left">Created by:</div>
     <div class="td left"><%= @folder.user.username %></div>
   </div>
   <div class="tr">
-    <div class="th left">Tags media inside this folder are associated to:</div>
+    <div class="th left">Tagged with:</div>
     <div class="td left">
-      <ul>
       <% @folder.media.each do |m| %>
-      <% m.tags.each do |t| %>
-        <li><%= link_to t.name, t %></li>
+      <%= m.tags.collect(&:name).join(", ") %>
       <% end %>
-      <% end %>
-      </ul>
     </div>
-    <div class="th left">Roles that can access this folder:</div>
+    <div class="th left">Accessible by:</div>
     <div class="td left">
-      <ul>
-      <% @folder.roles.each do |r| %>
-        <li><%= link_to r.name, r %></li>
-      <% end %>
-      </ul>
+      <%= @folder.roles.collect(&:name).join(", ") %>
     </div>
   </div>
 </div>
@@ -50,3 +90,4 @@
     <div class="td left"><%= @folder.description %></div>
   </div>
 </div>
+-->

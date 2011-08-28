@@ -15,6 +15,7 @@ Framework2::Application.routes.draw do
       get 'download_quadratic'
     end
     resources :comments
+    resources :tags
   end
 
   devise_for :users
@@ -39,6 +40,7 @@ Framework2::Application.routes.draw do
         get 'download_quadratic'
       end
       resources :comments
+      resources :tags
     end
   end
 

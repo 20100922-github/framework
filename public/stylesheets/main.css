@@ -24,6 +24,9 @@
 .left {
   text-align: left;
 }
+.right {
+  text-align: right;
+}
 .top {
   vertical-align: top;
 }
@@ -32,9 +35,27 @@
 }
 /* tables - end */
 
+/* folder show view - begin */
+.foldername {
+  padding: 20px;
+}
+.folderdescription {
+  color: silver;
+}
+.border {
+  padding-top: 20px;
+  width: 50%;
+}
+/* folder show view - end */
+
 /* general layout - begin */
 body {
   width: 100%;
+}
+.float {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 15px;
 }
 div.borders {
   position: absolute;

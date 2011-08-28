@@ -10,21 +10,14 @@
   <%= @user.username %>
 </p>
 
+<p>
 <b>Roles:</b>
-<ul>
-  <% @user.roles.each do |r| %>
-    <li><%= link_to r.name, role_path(r) %></li>
-  <% end %>
-</ul>
+<%= @user.roles.collect(&:name).join(", ") %>
 </p>
 
 <p>
-  <b>Folders created:</b>
-  <ul>
-  <% @user.folders.each do |f| %>
-    <li><%= link_to f.name, folder_path(f) %></li>
-  <% end %>
-  </ul>
+<b>Folders created:</b>
+<%= @user.folders.collect(&:name).join(", ") %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
