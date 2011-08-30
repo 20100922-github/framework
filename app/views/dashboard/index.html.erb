@@ -3,7 +3,7 @@
   <div class="tr">
     <% @folders.each_with_index do |f,i| %>
       <% if i < 5 %>
-        <div class="td thumbs left dashboard"><%= link_to image_tag(f.cover.url(:thumb)), f %>
+        <div class="td thumbs left top dashboard"><%= link_to image_tag(f.cover.url(:thumb)), f %>
           <div><%= distance_of_time_in_words(Time.now, f.created_at) %> ago</div>
           <div><%= link_to f.name, f %></div>
         </div>
@@ -18,7 +18,7 @@
   <div class="tr">
     <% @comments.each_with_index do |c,j| %>
       <% if j < 5 %>
-        <div class="td thumbs left dashboard"><%= link_to image_tag(c.medium.file.url(:quadratic)), c.medium %>
+        <div class="td thumbs left top dashboard"><%= link_to image_tag(c.medium.file.url(:quadratic)), c.medium %>
           <div><%= distance_of_time_in_words(Time.now, c.created_at) %> ago</div>
           <div><%= link_to c.medium.folder.name, c.medium.folder %></div>
           <div><%= link_to c.user.username, c.user %></div>

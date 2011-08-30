@@ -52,7 +52,7 @@ class CommentsController < ApplicationController
         @users.each do |u|
           CommentMailer.notify_new_comment(@comment,u).deliver
         end
-        format.html { redirect_to(@comment, :notice => 'Comment was successfully created.') }
+        format.html { redirect_to(@comment.medium, :notice => 'Comment was successfully created.') }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         format.html { render :action => "new" }

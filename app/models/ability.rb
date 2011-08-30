@@ -15,14 +15,17 @@ class Ability
 
     else
 
+      can :read_all, Folder, :roles => { :name => "Public" }
       can :read_all, Folder, :roles => { :id => user.role_ids }
       can :create, Folder
       can [:update, :destroy], Folder, :user => user.id
 
+      can :read_all, Medium, :folder => { :roles => { :name => "Public" }}
       can :read_all, Medium, :folder => { :roles => { :id => user.role_ids }}
       can :create, Medium
       can [:update, :destroy], Medium, :folder => { :user => user.id }
 
+      can :read, Comment, :medium => { :folder => { :roles => { :name => "Public" }}}
       can :read, Comment, :medium => { :folder => { :roles => { :id => user.role_ids }}}
       can :create, Comment
       can [:update, :destroy], Comment, :medium => { :folder => { :user => user.id }}
@@ -37,7 +40,8 @@ class Ability
         cannot [:update, :destroy], Role, :name => "Administrator"
         cannot [:update, :destroy], Role, :name => "Public"
         can [:create, :read], Role
-        can :manage, [Folder, Medium, Tag, Comment, User]
+        can [:update, :destroy], [Folder, Medium]
+        can :manage, [Tag, Comment, User]
 
       end
     end
