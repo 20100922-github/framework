@@ -26,11 +26,11 @@
                 </div>
               </div>
               <% @medium.comments.order("created_at DESC").each do |c| %>
-              <div class="tr">
-                <div class="td">
+                <div class="tr <%= cycle("odd", "even") %>">
+                <div class="td top left">
                   <%= c.user.username %>:
                 </div>
-                <div class="td">
+                <div class="td top left">
                   "<%= c.text %>"
                 </div>
               </div>
