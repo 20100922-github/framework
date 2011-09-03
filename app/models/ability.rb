@@ -8,9 +8,18 @@ class Ability
     #user ||= User.new
     unless user
 
+#      entities:
+#      Folder
+#      Medium
+#      Comment
+#      Tag
+#      Role
+#      User
+
       can :read_all, Folder, :roles => { :name => "Public" }
       can :read_all, Medium, :folder => { :roles => { :name => "Public" }}
       can :read, Tag, :media => { :folder => { :roles => { :name => "Public" }}}
+      can :read, Comment, :medium => { :folder => { :roles => { :name => "Public" }}}
       cannot :manage, [User, Role]
 
     else
@@ -18,17 +27,17 @@ class Ability
       can :read_all, Folder, :roles => { :name => "Public" }
       can :read_all, Folder, :roles => { :id => user.role_ids }
       can :create, Folder
-      can [:update, :destroy], Folder, :user => user.id
+      can [:update, :destroy], Folder, :user => { :id => user.id }
 
       can :read_all, Medium, :folder => { :roles => { :name => "Public" }}
       can :read_all, Medium, :folder => { :roles => { :id => user.role_ids }}
       can :create, Medium
-      can [:update, :destroy], Medium, :folder => { :user => user.id }
+      can [:update, :destroy], Medium, :folder => { :user => { :id => user.id }}
 
       can :read, Comment, :medium => { :folder => { :roles => { :name => "Public" }}}
       can :read, Comment, :medium => { :folder => { :roles => { :id => user.role_ids }}}
       can :create, Comment
-      can [:update, :destroy], Comment, :medium => { :folder => { :user => user.id }}
+      can [:update, :destroy], Comment, :medium => { :folder => { :user => { :id => user.id }}}
 
       can :read, Tag
 

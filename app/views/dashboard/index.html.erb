@@ -1,4 +1,14 @@
-<h1>Last 5 folders created:</h1>
+<h1>
+<% if @folders.size == 0 %>
+  No public folders created yet.
+<% elsif @folders.size == 1 %>
+  First <% if !(user_signed_in?) %>public<% end %> folder created:
+<% elsif @folders.size < 5 %>
+  First <%= @folders.size %> <% if !(user_signed_in?) %>public<% end %> folders created:
+<% else %>
+  Last <%= @folders.size %> <% if !(user_signed_in?) %>public<% end %> folders created:
+<% end %>
+</h1>
 
 <div class="table">
   <div class="tr">
@@ -14,7 +24,19 @@
   </div>
 </div>
 
-<h1>Last 5 comments created:</h1>
+
+<h1>
+<% if @comments.size == 0 %>
+  No public comments created yet.
+<% elsif @comments.size == 1 %>
+  First <% if !(user_signed_in?) %>public<% end %> comment created:
+<% elsif @comments.size < 5 %>
+  First <%= @comments.size %> <% if !(user_signed_in?) %>public<% end %> comments created:
+<% else %>
+  Last <%= @comments.size %> <% if !(user_signed_in?) %>public<% end %> comments created:
+<% end %>
+</h1>
+
 <div class="table">
   <div class="tr">
     <% @comments.each_with_index do |c,j| %>
@@ -33,5 +55,5 @@
 
 <% if user_signed_in? %>
 <% else %>
-  <h1><%= link_to "Log in", new_user_session_path %> to view non-public folders</h1>
+  <h1><%= link_to "Log in", new_user_session_path %> to view non-public folders and comments</h1>
 <% end %>

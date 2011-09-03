@@ -1,14 +1,11 @@
 planned todos/features:
 
-- rubrik, in der alle fotos angezeigt werden, die seit dem letzten login hochgeladen wurden
+- section, which shows all media that has been uploaded since the last login
 - paperclip interpolation for storage of images: something planned like private/<username>/<datum>/...
 - media bulk upload
 - css hover icons
-- implement more detailed access management:
--- roles (cannot be altered at runtime, users can each have 1 role):
---- admin (can do everything, maybe some kind of 'sudo', also rights of user and guest)
---- users (can create own folders with media, also rights of guest)
---- guests (users that are not logged in)
--- groups (can be altered at runtime, users can each have multiple groups):
---- when creating a folder, the owner can set which users can view the folder (and comment on its media)
---- this can be: none (i.e. restricted to owner only), individual users, predefined group of users (e.g. "family", "friends", ...), all (i.e. world-wide readable)
+
+bugs:
+
+- user which belongs to role administrator cannot access everything
+- editing media inside folders messes them up
