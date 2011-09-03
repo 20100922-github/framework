@@ -1,4 +1,5 @@
 <h1>Last 5 folders created:</h1>
+
 <div class="table">
   <div class="tr">
     <% @folders.each_with_index do |f,i| %>
@@ -29,3 +30,8 @@
     <% if @comments.size > 5 %><div class="td"><%= link_to "Show all comments", comments_path %></div><% end %>
   </div>
 </div>
+
+<% if user_signed_in? %>
+<% else %>
+  <h1><%= link_to "Log in", new_user_session_path %> to view non-public folders</h1>
+<% end %>

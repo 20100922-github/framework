@@ -26,7 +26,7 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
-  <% for role in Role.find(:all) %>
+  <% for role in Role.where("not name = ?","Public") %>
   <div>
     <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
     <%= role.name %>
