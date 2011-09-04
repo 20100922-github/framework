@@ -55,5 +55,5 @@
 
 <% if user_signed_in? %>
 <% else %>
-  <h1><%= link_to "Log in", new_user_session_path %> to view non-public folders and comments</h1>
+  <h1><%= link_to image_tag("login_32x32.png"), new_user_session_path %><%= link_to "Log in", new_user_session_path %> to view non-public folders and comments</h1>
 <% end %>
