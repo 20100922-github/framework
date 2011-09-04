@@ -8,6 +8,9 @@ class Medium < ActiveRecord::Base
                     :url => "/:class/:id/download_:style",
                     :styles => { :medium => "300x300>", :thumb => "100x100>", :quadratic => "50x50#" }
 
+  validates :file_file_name, :folder_id, :presence => true
+  validates :folder_id, :numericality => { :only_integer => true }
+
   def next
     Medium.where("id > ? and folder_id = ?", self.id, self.folder.id).order("id ASC").first
   end

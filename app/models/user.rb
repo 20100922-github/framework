@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   has_many :folders
   has_many :comments
 
+  validates :email, :username, :encrypted_password, :presence => true
+  validates :email, :username, :uniqueness => true
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
