@@ -4,8 +4,17 @@ planned todos/features:
 - paperclip interpolation for storage of images: something planned like private/<username>/<datum>/...
 - media bulk upload
 - css hover icons
+- section, which shows only folders created by logged-in user
+- section for self-administration of user account
+- automatically delete tag, if number of associations to it equals 0 
+- ability to create tags on-the-fly when creating/updating media
+- at folders show view, list only *distinct* tags
+- using exif data of uploaded photos
+- showing location where photo was shot on map
 
 bugs:
 
 - user which belongs to role administrator cannot access everything
 - editing media inside folders messes them up
+- duplicated comments (with role = Administrators)
+- deleting folders

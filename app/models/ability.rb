@@ -42,7 +42,6 @@ class Ability
       can :read, Tag
 
       can [:read, :update], User, :id => user.id
-      cannot :manage, [User, Role]
 
       if user.role? :Administrator
 

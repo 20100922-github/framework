@@ -11,13 +11,19 @@
 </p>
 
 <p>
-<b>Roles:</b>
-<%= @user.roles.collect(&:name).join(", ") %>
+  <b>Roles:</b>
+  <%= @user.roles.collect(&:name).join(", ") %>
 </p>
 
 <p>
 <b>Folders created:</b>
-<%= @user.folders.collect(&:name).join(", ") %>
+<div>
+  <% @user.folders.each do |f| %>
+    <span class="thumbs">
+      <%= link_to image_tag(f.cover(:thumb)), folder_path(f) %>
+    </span>
+  <% end %>
+</div>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
