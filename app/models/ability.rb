@@ -43,9 +43,9 @@ class Ability
 
       can [:read, :update], User, :id => user.id
 
-      if user.role? :Administrator
+      if user.role? :Administrators
 
-        cannot [:update, :destroy], Role, :name => "Administrator"
+        cannot [:update, :destroy], Role, :name => "Administrators"
         cannot [:update, :destroy], Role, :name => "Public"
         can [:create, :read], Role
         can [:update, :destroy], [Folder, Medium]
